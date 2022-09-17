@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600;700&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+
+.mypagecontainer{
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.mypagetit{
+    margin-top: 166px;
+    font-family: 'Noto Serif KR';
+    font-size: 55px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: #668FA1;
+    text-align: left;
+    animation: pageslide1 2s;
+}
+
+.mypagebox{
+    margin-top: 115px;
+    width: 350px;
+    height: 829px;
+    background-color: #F8F8F8;
+    float: left;
+    animation: pageslide2 2s;
+}
+
+.mypagebox1{
+    margin-top: 115px;
+    width: 782px;
+    height: 178px;
+    float: left;
+    margin-left: 70px; 
+    border: 3px solid;
+    border-color: #93B0BD;
+    animation: pageslide2 2s;
+}
+
+.mypageboxtext{
+    margin-top: 55px;
+    margin-left: 55px;
+    float: left;
+    color: #333333;
+    font-family: 'Noto Sans KR';
+    font-size: 35px;
+    font-weight: 400;
+}
+
+.mypageboxtext1{
+    margin-top: 15px;
+    margin-left: 55px;
+    font-family: 'Noto Sans KR';
+    font-size: 24px;
+    font-weight: 300;
+    color: #333333;
+    float: left;
+    clear: both;
+}
+
+.mypageboxtext2{
+    margin-top: 15px;
+    margin-left: 15px;
+    font-family: 'Noto Sans KR';
+    font-size: 24px;
+    font-weight: 400;
+    color: #668FA1;
+    float: left;
+}
+
+.mypageboxtext3{
+    margin-top: 50px;
+    margin-left: 55px;
+    font-family: 'Noto Sans KR';
+    font-size: 24px;
+    font-weight: 400;
+    color: #333333;
+    float: left;
+    clear: both;
+}
+
+.mypageboxtext4{
+    margin-top: 15px;
+    margin-left: 55px;
+    font-family: 'Noto Sans KR';
+    font-size: 24px;
+    font-weight: 300;
+    color: #333333;
+    float: left;
+    clear: both;
+}
+
+.mypageboxtext5{
+    margin-top: 6px;
+    margin-left: 55px;
+    font-family: 'Noto Sans KR';
+    font-size: 24px;
+    font-weight: 300;
+    color: #333333;
+    float: left;
+    clear: both;
+}
+
+.mypageboxtext6{
+    height: 302px;
+}
+
+.mypageboxtext4 a{
+    color:#333333;
+}
+
+.mypagetit a{
+    color:#668FA1;
+}
+
+@keyframes pageslide1 {
+    from{
+      margin-top: -166px;
+      opacity: 0;
+    }
+    to{
+      margin-top: 166px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes pageslide2 {
+    from{
+      margin-top: -115px;
+      opacity: 0;
+    }
+    to{
+      margin-top: 115px;
+      opacity: 1;
+    }
+  }
+  

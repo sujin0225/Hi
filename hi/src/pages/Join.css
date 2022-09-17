@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.joinbox1{
+  margin-top: 125px;
+  font-family: 'Hahmlet';
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  color: #333333;
+}  
+.joinbox2{
+height: 100px;
+}
+
+.write{
+  font-family: 'Noto Sans KR';
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 54px;
+  margin-bottom: 20px;  
+  float: right;
+}
+
+.write button{
+display: inline-block;
+position: relative;
+padding: 10px 20px;
+border: 3px solid #C7D8DD;
+color: #333333;
+text-align: center;
+text-decoration: none;
+font-family: 'Noto Sans KR';
+font-size: 18px;
+background-color: transparent;
+cursor: pointer;
+}
+
+.write button:hover{
+background-color: #C7D8DD;
+color: #ffffff;
+transition : 0.5s;
+}
+
+.jointextbox1 {
+  width: 410px;
+  height: 338px;
+  border: 3px solid;
+  border-color: #93B0BD;
+  margin-top: 20px;
+  clear: right;
+  float: left;
+  cursor: pointer;
+  background-color: transparent;
+  color:#333333;
+}
+
+.jointextbox1:hover{
+  background-color: #C7D8DD;
+  color: #ffffff;
+  transition : 0.5s;
+} 
+
+.jointextbox1 a{
+  color:#333333;
+}
+
+.jointextbox1 a:hover{
+  background-color: #C7D8DD;
+  color: #ffffff;
+  transition : 0.5s;
+  }
+
+
+.jointextbox2{
+width: 410px;
+height: 338px;
+border: 3px solid;
+border-color: #93B0BD;
+margin-top: 20px;
+margin-left: 25px;
+clear: right;
+float: left;
+cursor: pointer;
+background-color: transparent;
+color: #333333;
+}
+
+.jointextbox2 a:hover{
+  background-color: #C7D8DD;
+  color: #ffffff;
+  transition : 0.5s;
+  }
+
+  .jointextbox2:hover{
+    background-color: #C7D8DD;
+    transition : 0.5s;
+    }  
+
+  .jointextbox2 a{
+    color:#333333;
+  }
+
+.jointextbox3{
+width: 423px;
+height: 338px;
+border: 3px solid;
+border-color: #93B0BD;
+margin-top: 20px;
+margin-left: 25px;
+}
+
+.joinbox{
+width: 1321px;
+height: 800px;
+clear: both;
+}
+
+.joinmorebutton{
+width: 271px;
+height: 58px;
+background-color: #668FA1;
+font-family: 'Noto Sans KR';
+font-weight: 500;
+font-size: 25px;
+color:#FEFEFE;
+padding-top: 10px;
+border:none;
+cursor: pointer;
+margin: 0 auto;
+}
+
+.joinsearchbox{
+background: #F8F8F8;
+height: 361px;
+}
+
+.joinsearchbox1 {
+  width: 1280px;
+  margin:0px auto;
+  clear: both;
+  font-family: 'Noto Sans KR';
+  font-size: 20px;
+  text-align: left;
+  display: flex;
+}
+
+.joinsearchbox1 a{
+  color: #575757;
+}
+
+/* .joinsearchbar {
+  width: 813px;
+  height: 44px;
+  background-color: #333333;
+  
+} */
+
+.joinsearchdata input{
+  color: #575757;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;
+  background-color:transparent;
+  border:none;
+  line-height: 55px;
+  outline: none ;
+  width: 192px;
+  font-size: 20px;
+  position: relative;;
+  float: left;
+  margin-top: 95px;
+  margin-left: 33px;
+  border-bottom:1px solid #E3E3E3;
+}
+
+.joinsearchdata input[type="date"]::before {
+  content:attr(data-placeholder);
+  width:100%;
+  color:#575757;
+}
+
+/* .joinsearchbox1::placeholder {
+  color: #FEFEFE;
+  font-size: 10px; 
+  color: #575757;
+} */
+
+.joinbutton{
+  width: 131px;
+  height: 44px;
+  background-color: #668FA1;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  font-size: 20px;
+  color:#FEFEFE;
+  padding-top: 4px;
+  border:none;
+  cursor: pointer;
+  margin-top: 110px;
+  padding-left: 24px;
+  margin-left: 30px;
+}
+
+.joinsearchin {
+  width: 808px;
+  height: 59px;
+  background-color: transparent;
+  border: 3px solid #668FA1;
+  position: absolute;
+  margin-top: 180px;
+  margin-left: 216px;
+  font-family: 'Noto Sans KR';
+  font-size: 20px;
+  
+}
+
+.joinsearch1 input{
+  font-family: 'Noto Sans KR';
+  font-size: 20px;
+  border:none;
+  line-height: 54px;
+  outline: none ;
+  width: 745px;
+  background-color: transparent;
+  margin-left: 16px;
+}
+
+.joinsearch1 input::placeholder{
+  color: #767676;
+  font-size: 20px;
+}
+
+
+.caltitle{
+  font-family: 'Gowun Dodum';
+  color:#333333;
+  margin-top: 56px;
+  margin-bottom: 80px;
+  
+}
+
+.interval{
+  height: 304px;
+}
+
+.jointexttitl1{
+  font-family: 'Hahmlet';
+  font-weight: 300;
+  font-size: 25px;
+  margin-top: 47px;
+  text-align: left;
+  margin-left: 22px;
+}
+
+.jointextcon{
+  margin-top: 48px;
+  font-family: 'Noto Sans KR';
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 47px;
+  text-align: left;
+  margin-left: 22px;
+}
+
+.jointextcon1{
+  margin-top: 48px;
+  font-family: 'Noto Sans KR';
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 11px;
+  text-align: left;
+  margin-left: 22px;
+}
+
+.jointexticon{
+  text-align: right;
+  margin-right: 33px;
+  margin-top: 33px;
+}

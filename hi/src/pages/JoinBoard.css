@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+.container {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.joinboardtitle {
+    margin-top: 68px;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    font-size: 35px;
+    float: left;
+    color:#333333;
+}
+
+.joinboarddate{
+    margin-top: 90px;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    font-size: 20px;
+    float: right;
+    color:#707070;
+}
+
+.joinboardline{
+    background-color:#F1F1F1;
+    width:1279px;
+    height:1px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    float: left;
+}
+
+.joinboardtextbox1{
+    width: 120px;
+    float: left;
+}
+
+.joinboardtextbox2{
+    width: 270px;
+    float: left;
+}
+
+.joinboardtextbold1 {
+    font-family: 'Noto Sans KR';
+    font-size: 23px;
+    font-weight: 500;
+    float: left;
+    color: #535353;
+}
+
+.joinboardtextbold2 {
+    font-family: 'Noto Sans KR';
+    font-size: 23px;
+    font-weight: 500;
+    float: left;
+    color: #535353;
+    margin-top: 11px;
+}
+
+.joinboardtext1 {
+    font-family: 'Noto Sans KR';
+    font-size: 22px;
+    font-weight: 400;
+    float: left;
+    color: #707070;
+}
+
+.joinboardtext2 {
+    font-family: 'Noto Sans KR';
+    font-size: 22px;
+    font-weight: 400;
+    float: left;
+    color: #707070;
+    margin-top: 13px;
+}
+
+.joinboardtext3 {
+    font-family: 'Noto Sans KR';
+    font-size: 22px;
+    font-weight: 400;
+    color: #707070;
+    margin-top: 13px;
+    margin-right: 180px;
+    float: left;
+}
+
+.joinboardtext4 {
+    font-family: 'Noto Sans KR';
+    font-size: 22px;
+    font-weight: 400;
+    color: #707070;
+    margin-top: 13px;
+    float: left;
+    margin-right: 180px;
+}
+
+.joinboardbutton1{
+    display: inline-block;
+    position: relative;
+    padding: 8px 20px;
+    border: 3px solid #C7D8DD;
+    color: #333333;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Noto Sans KR';
+    font-size: 15px;
+    background-color: transparent;
+    cursor: pointer;
+    float: right;
+    margin-left: 10px;
+    }
+    
+    .joinboardbutton1:hover{
+    background-color: #C7D8DD;
+    color: #ffffff;
+    transition : 0.5s;
+    }
+
+    .joinboardbutton2{
+        display: inline-block;
+        position: relative;
+        padding: 8px 20px;
+        border: 3px solid #C7D8DD;
+        color: #333333;
+        text-align: center;
+        text-decoration: none;
+        font-family: 'Noto Sans KR';
+        font-size: 15px;
+        background-color: transparent;
+        cursor: pointer;
+        float: right;
+        margin-left: 10px;
+        }
+        
+        .joinboardbutton2:hover{
+        background-color: #C7D8DD;
+        color: #ffffff;
+        transition : 0.5s;
+        }
+
+.joinboardbox1{
+    height: 70px;
+    width: 1280px;
+    float: left;
+}
+
+.joinboardbox2{
+    height: 300px;
+    width: 1280px;
+    float: left;
+}
+
+.joinboardbox2{
+    height: 40px;
+    width: 1280px;
+    float: left;
+}
+
+.joinboardmaintext1 {
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    font-weight: 400;
+    color: #535353;
+    text-align: left;
+}
+
+.joinboardmaintext2 {
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    font-weight: 400;
+    color: #535353;
+    float: left;
+    margin-top:6px;
+    display: inline-block;
+}
+
+.joinboardcom1 {
+    font-family: 'Noto Sans KR';
+    font-size: 18px;
+    font-weight: 400;
+    color: #535353;
+    position: absolute;
+    float: left;
+}
+
+.joinboardcom2 {
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    font-weight: 400;
+    color: #535353;
+    float: left;
+    margin-top: 40px;
+}
+
+.joinboardcombox {
+    width: 1280px;
+    height: 100px;
+    float: left;
+}
+
+.joinboardcombox1 {
+    width: 1280px;
+    height: 150px;
+    float: left;
+}
+
+.joinboardcombox2{
+    width: 1200px;
+    float: left;
+    background-color:#F8F8F8;
+    margin-left: 75px;
+    padding-left: 28px;
+    padding-top: 27px;
+    padding-bottom: 55px;
+    margin-bottom: 30px;
+}
+
+.joinboardcombox3 {
+    width: 1280px;
+    height: 140px;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.joinboardcommand input{
+    width: 1280px;
+    height: 140px;
+    border: 3px solid #C7D8DD;
+    background-color: transparent;
+    float: right;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 400;
+    color: #9E9E9E;
+    line-height: 10px;
+    outline: none ;
+    padding-left: 22px;
+    padding-bottom: 60px;
+}
+
+
+.joinboardcommand input::placeholder {
+    color: #9E9E9E;
+    font-size: 20px; 
+  }
+
+
+.joinboardline1{
+    background-color:#F1F1F1;
+    width:1279px;
+    height:1px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    float: left;
+}
+
+.joinboardbutton{
+    width: 200px;
+    height: 52px;
+    background-color: #668FA1;
+    font-family: 'Noto Sans KR';
+    font-weight: 500;
+    font-size: 21px;
+    color:#FEFEFE;
+    padding-top: 10px;
+    border:none;
+    cursor: pointer;
+    float: right;
+}
+
+.gap{
+    height: 304px;
+    float: left;
+    width: 100%;
+}

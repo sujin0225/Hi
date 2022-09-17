@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600;700&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+
+.roommain {
+    margin-top: 61px;
+    font-family: 'Gowun Batang';
+    font-size: 40px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.roommain1 {
+  margin-top: 61px;
+  font-family: 'Gowun Batang';
+  font-size: 40px;
+  float: right;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #668FA1;
+}
+  
+.roomcontainer{
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.roominfo{
+    margin-top: 120px;
+    color: #333333;
+    font-family: 'Noto Serif KR';
+    font-size: 60px;
+    text-align: left;
+    float: left;
+    animation: slide1 2s;
+}
+
+.roominfo1{
+    margin-top: 160px;
+    color: #333333;
+    font-family: 'Noto Sans KR';
+    font-size: 30px;
+    text-align: right;
+    float: left;
+    margin-left: 322px;
+    font-weight: 400;
+    animation: slide2 2s;
+}
+
+.roominfo2{
+  margin-top: 20px;
+  color: #668FA1;
+  font-family: 'Noto Sans KR';
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 99px;
+}
+
+.roominfo3{
+  margin-top: 160px;
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 30px;
+  text-align: right;
+  float: left;
+  margin-left: 20px;
+  font-weight: 300;
+  animation: slide2 2s;
+}
+
+.roominfo4{
+  margin-top: 160px;
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 30px;
+  text-align: right;
+  float: left;
+  margin-left: 110px;
+  font-weight: 400;
+  animation: slide2 2s;
+}
+
+.roominfo5{
+  margin-top: 29px;
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 30px;
+  text-align: right;
+  float: left;
+  margin-left: 322px;
+  font-weight: 400;
+}
+
+.roominfo6{
+  margin-top: 10px;
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 30px;
+  text-align: right;
+  float: left;
+  margin-left: 322px;
+  font-weight: 300;
+}
+
+.roominfobox{
+  margin-top: 60px;
+  background-color: #F8F8F8;
+  height:360px;
+  width: 100%;
+  float: left; 
+  animation: slide3 2s;
+}
+
+.roomboxtext{
+  margin-left: 60px;
+  margin-top: 45px;
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 25px;
+  display: flex;
+}
+
+.roomboxtext1{
+  margin-left: 60px;
+  margin-top: 16px;
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 25px;
+  display: flex;
+}
+
+.roominfo7{
+  color: #333333;
+  font-family: 'Hahmlet';
+  font-size: 40px;
+  text-align: left;
+  float: left;
+  margin-bottom: 40px;
+  font-weight: 400;
+  margin-top: 99px;
+  animation: slide4 2s;
+}
+
+.roomline{
+  background-color: #CFCFCF;
+  height:1px;
+  width: 100%;
+  float: left; 
+}
+
+.roomlinebox1{
+  background-color: #FFFFFF;
+  height:70px;
+  width: 640px;
+  float: left;
+}
+
+.roomlinebox2{
+  background-color: #FFFFFF;
+  height:70px;
+  width: 640px;
+  float: right; 
+}
+
+.roomlinetext{
+  color: #333333;
+  font-family: 'Hahmlet';
+  font-size: 25px;
+  font-weight: 300;
+  margin-top: 15px;
+}
+
+.roomlinebox3{
+  background-color: #ffffff;
+  height:138px;
+  width: 640px;
+  float: left; 
+  border-right:1px solid #CFCFCF;
+}
+
+.roomlinebox4{
+  background-color: #ffffff;
+  height:138px;
+  width: 640px;
+  float: right; 
+}
+
+.roomlinetext1{
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 22px;
+  font-weight: 300;
+  margin-top: 27px;
+  margin-left: 116px;
+  float: left;
+}
+
+.roomlinetext2{
+  margin-left: 46px;
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 22px;
+  font-weight: 300;
+  margin-top: 27px;
+  float: left;
+}
+
+.roomtext1{
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 25px;
+  font-weight: 300;
+  float: left;
+  text-align: left;
+  clear: both;
+  animation: slide5 2s;
+}
+
+.roomtext2{
+  color: #333333;
+  font-family: 'Noto Sans KR';
+  font-size: 25px;
+  font-weight: 300;
+  float: left;
+  text-align: left;
+  margin-top: 16px;
+  clear: both;
+  animation: slide6 2s;
+}
+
+.roombutton{
+  color: #FEFEFE;
+  font-family: 'Noto Sans KR';
+  font-size: 20px;
+  font-weight: 400;
+  float: right;
+  margin-top: 99px;
+  clear: both;
+  width: 200px;
+  height: 61px;
+  background-color: #668FA1;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border:none;
+  cursor: pointer;
+  margin-bottom: 240px;
+}
+
+.roombutton a{
+  color:#ffffff;
+}
+
+@keyframes slide1 {
+  from{
+    margin-top: -120px;
+    opacity: 0;
+  }
+  to{
+    margin-top: 120px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide2 {
+  from{
+    margin-top: -160px;
+    opacity: 0;
+  }
+  to{
+    margin-top: 160px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide3 {
+  from{
+    margin-top: -60px;
+    opacity: 0;
+  }
+  to{
+    margin-top: 60px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide4 {
+  from{
+    margin-top: -99px;
+    opacity: 0;
+  }
+  to{
+    margin-top: 99px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide5 {
+  from{
+    margin-top: -6px;
+    opacity: 0;
+  }
+  to{
+    margin-top: 6px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide6 {
+  from{
+    margin-top: -14px;
+    opacity: 0;
+  }
+  to{
+    margin-top: 14px;
+    opacity: 1;
+  }
+}

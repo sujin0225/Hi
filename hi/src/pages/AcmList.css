@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;600;700&display=swap');
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.search{
+  width: 928px;
+  height: 56px;
+  background-color: #F5F5F5;
+  margin-top: 60px;  
+  margin-left: 300px;
+}
+
+.search1 input{
+  color: #333333;
+  font-family: 'Gowun Batang';
+  background-color:transparent;
+  border:none;
+  line-height: 35px;
+  outline: none;
+  width: 165px;
+  font-size: 25px;
+  display: flex;
+  padding-left: 30px;
+  padding-top: 10px;
+  position: absolute;
+}
+
+.search1 input::placeholder {
+  color: #333333;
+  font-size: 25px; 
+  border-right:1px solid #DBDBDB;
+}
+
+.checkin input{
+  color: #333333;
+  font-family: 'Gowun Batang';
+  background-color:transparent;
+  border:none;
+  line-height: 35px;
+  outline: none ;
+  width: 180px;
+  font-size: 25px;
+  position: relative;
+  float: left;
+  margin-left: 230px;
+  margin-top: 10px;
+}
+
+.checkin input[type="date"]::before {
+  content:attr(data-placeholder);
+  width:100%;
+  color:#333333;
+  border-right:1px solid #DBDBDB;
+}
+
+.checkout input{
+  color: #333333;
+  font-family: 'Gowun Batang';
+  background-color:transparent;
+  border:none;
+  line-height: 35px;
+  outline: none ;
+  width: 192px;
+  font-size: 25px;
+  position: relative;;
+  float: left;
+  margin-top: 10px;
+}
+
+.checkout input[type="date"]::before {
+  content:attr(data-placeholder);
+  width:100%;
+  color:#333333;
+  border-right:1px solid #DBDBDB;
+}
+
+.guest1 input{
+  color: #333333;
+  font-family: 'Gowun Batang';
+  background-color:transparent;
+  border:none;
+  line-height: 35px;
+  outline: none;
+  width: 155px;
+  font-size: 25px;
+  display: flex;
+  position: relative;
+  float: left;
+  margin-top: 10px;
+}
+
+.guest1 input::placeholder {
+  color: #333333;
+  font-size: 25px; 
+}
+
+.button0{
+  width: 150px;
+  height: 56px;
+  background-color: #668FA1;
+  float: right;
+  font-family: 'Gowun Batang';
+  color: #FEFEFE;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border:none;
+  cursor: pointer;
+}
+
+.button1{
+  width: 270px;
+  height: 56px;
+  background-color: #668FA1;
+  float: right;
+  font-family: 'Gowun Batang';
+  color: #FEFEFE;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;
+  font-size: 23px;
+  border:none;
+  cursor: pointer;
+}
+
+.morebutton{
+  width: 240px;
+  height: 76px;
+  background-color: #668FA1;
+  float: left;
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  font-size: 25px;
+  color:#FEFEFE;
+  margin-top: 96px;
+  padding-top: 4px;
+  margin-left: 340px;
+  border:none;
+  cursor: pointer;
+}
+
+.filterbox{
+  width:260px;
+  height: 628px;
+  background-color: #ffffff;
+  float: left;
+}
+
+button{
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
+.lodgingbox{
+  width:980px;
+  height: 2244px;
+  background-color: #ffffff;
+  float: right;
+}
+
+.lodgingbox1{
+  width: 450px;
+  height: 548px;
+  background-color: #ffffff;
+  float: left;
+  margin-top: 79px;
+}
+
+.lodgingbox2{
+  width: 450px;
+  height: 548px;
+  background-color: #ffffff;
+  float: left;
+  margin-left: 15px;
+  margin-top: 39px;
+}
+
+.lodgingbox3{
+  width: 450px;
+  height: 548px;
+  background-color: #ffffff;
+  float: left;
+  margin-top: 55px;
+}
+
+.lodgingbox4{
+  width: 450px;
+  height: 548px;
+  background-color: #ffffff;
+  float: left;
+  margin-left: 30px;
+  margin-top: 55px;
+}
+
+.lodgingbox5{
+  width: 450px;
+  height: 548px;
+  background-color: #EEEEEE;
+  float: left;
+  margin-left: 300px;
+  margin-top: 55px;
+}
+
+.lodgingtitle{
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  font-size: 25px;
+  color: #333333;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.lodgingcontent{
+  font-family: 'Noto Sans KR';
+  font-weight: 400;
+  font-size: 22px;
+  color: #5B5B5B;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.lodgingcontent1{
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  font-size: 30px;
+  color: #668FA1;
+  text-align: right;
+  margin-top: 12px;
+}
+
+
+
+.accordion {
+  width: 271px;
+  margin-top: 79px;
+  position: absolute;
+}
+
+.item {
+  background: #FFFFFF;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom:1px solid #EEEEEE;
+}
+
+.title {
+  color:#4D4D4D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.content0001 {
+  color: #8b7f75;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+
+.content0001.show{
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1,0,1,0);
+}
+
+
