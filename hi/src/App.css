@@ -6,6 +6,7 @@
 .App {
   text-align: center;
   zoom: 67%;
+  padding-top: 120px;
 }
 
 .container {
@@ -13,9 +14,20 @@
   margin: 0 auto;
 }
 
+.headercontainer {
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  background-color: #ffffff;
+  top: 0;
+  z-index: 20;
+}
+
 .header {
   width: 1280px;
   margin: 0 auto;
+  height: 120px;
+  
 }
 
 .headerlogo {
@@ -85,19 +97,23 @@
 }
 
 .headermenu1 a:hover{
-  color:#333333;
-}
+  color: #668FA1;
+  transition : 0.5s;
+} 
 
 .headermenu2 a:hover{
-  color:#333333;
+  color: #668FA1;
+  transition : 0.5s;
 }
 
 .headermenu3 a:hover{
-  color:#333333;
+  color: #668FA1;
+  transition : 0.5s;
 }
 
 .headermenu4 a:hover{
-  color:#333333;
+  color: #668FA1;
+  transition : 0.5s;
 }
 
 a {
@@ -117,13 +133,14 @@ a:hover{
   margin-top: 40px;
   height: 700px;
   display: flex;
-  
+  animation: slidemain2 2s;
 }
 
 .main1{
     width: 1280px;
     margin:0px auto;
     display: flex;
+    
 }
 
 .main2 {
@@ -132,20 +149,8 @@ a:hover{
   font-size: 50px;
   position: absolute;
   margin-top: 220px;
-}
-
-.mainsearch1 input{
-  color: #FEFEFE;
-  font-family: 'Gowun Batang';
-  background-color:transparent;
-  margin-top: 340px;
-  position: relative;
-  border:none;
-  line-height: 35px;
-  outline: none ;
-  width: 200px;
-  font-size: 30px;
-  border-right:1px solid #BBC3C5;
+  margin-bottom: 220px;
+  text-align: left;
 }
 
 .maindata1 input{
@@ -160,6 +165,8 @@ a:hover{
   outline: none ;
   width: 192px;
   font-size: 30px;
+  cursor: pointer;
+  
 }
 
 .maindata2 input{
@@ -175,14 +182,35 @@ a:hover{
   width: 199px;
   font-size: 30px;
   border-right:1px solid #BBC3C5;
+  cursor: pointer;
+}
+
+.mainsearch1 input{
+  font-family: 'Gowun Batang';
+  background-color:transparent;
+  position: relative;
+  border:none;
+  line-height: 35px;
+  outline: none ;
+  width: 240px;
+  font-size: 30px;
+  color: #FEFEFE;
+  float: left;
+  clear: both;
+  margin-top: 15px;
+}
+
+.mainsearch1 input::placeholder{
+  font-family: 'Gowun Batang';
+  color: #FEFEFE;
 }
 
 .mainsearch2 {
   color: #FEFEFE;
   font-family: 'Gowun Batang';
   font-size: 30px;
-  margin-top: 335px;
   margin-left: 10px;
+  float: left;
 }
 
 .mainsearch3 {
@@ -215,7 +243,7 @@ a:hover{
   transition : 0.5s;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator{
+/* input[type="date"]::-webkit-calendar-picker-indicator{
   opacity:0;
   z-index: 1;
   cursor: pointer;
@@ -230,12 +258,9 @@ input[type="date"]::before {
 input[type="date"]:focus:before,
 input[type="date"]:valid:before{
   display: none;
-}
+} */
 
-input::placeholder {
-  color: #FEFEFE;
-  font-size: 30px; 
-}
+
 
 .content1 {
   margin-top:130px;
@@ -244,6 +269,8 @@ input::placeholder {
   font-size: 40px;
   display: flex;
   color:#333333;
+  overflow: hidden;
+  
 }
 
 .content2 {
@@ -379,6 +406,7 @@ input::placeholder {
   height:509px;
   width: 100%;
   float: left; 
+  
 }
 
 .footer{
@@ -495,11 +523,32 @@ input::placeholder {
   color: #61dafb;
 }
 
+.swiper .swiper-pagination-progressbar {
+  background: #EEEEEE;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: #668FA1 !important;;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+
+@keyframes slidemain2 {
+  from{
+    margin-left: -0px;
+    opacity: 0;
+  }
+  to{
+    margin-left: 0px;
+    opacity: 1;
   }
 }

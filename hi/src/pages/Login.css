@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600;700&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+
+.Logincontainer{
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.Logintitle{
+    margin-top: 176px;
+    font-family: 'Noto Serif KR';
+    font-size: 55px;
+    color:#668FA1;
+    float: left;
+    margin-bottom: 100px;
+    
+}
+
+.loginid input{
+    width: 625px;
+    height: 66px;
+    background-color: #F6F6F6;
+    float: left;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 10px;
+    outline: none ;
+    clear: both;
+    border: 1px solid #ffffff;
+    padding-left: 26px;
+}
+
+.loginid input::placeholder {
+    color: #808080;
+    font-size: 20px; 
+}
+
+.loginpw input{
+    width: 625px;
+    height: 66px;
+    background-color: #F6F6F6;
+    float: left;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 10px;
+    outline: none ;
+    clear: both;
+    border: 1px solid #ffffff;
+    padding-left: 26px;
+    margin-top: 7px;
+}  
+
+.loginpw input::placeholder {
+    color: #808080;
+    font-size: 20px; 
+}
+
+.loginbutton{
+    width: 625px;
+    height: 63px;
+    float: left;
+    background-color: #668FA1;
+    clear: both;
+    margin-top: 30px;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 400;
+    color:#FEFEFE;
+    padding-top: 17px;
+    border:none;
+    cursor: pointer;
+}
+
+.loginjoin {
+    margin-top: 30px;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 400;
+    float: left;
+    clear: both;
+    color: #535353;
+}
+
+.loginfind {
+    margin-top: 30px;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 400;
+    float: left;
+    color: #535353;
+    margin-left: 30px;
+}
+
+.logingap {
+    height: 300px;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+
+.loginheaderlogo {
+    text-align:left;
+    font-weight: 700;
+    font-size: 50px;
+    font-family:'Hahmlet';
+    display: flex;
+    margin-top: 40px;
+  }
+  
+  .loginheaderlogo a{
+    color:#668FA1;
+  }
+  
+  .loginheaderlogo a:hover{
+    color:#668FA1;
+  }
+  
+  
+  .loginheadermenu1 {
+    font-family:'Hahmlet';
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: 25px;
+    margin-left: 100px;
+    color:#668FA1;
+  }
+  
+  .loginheadermenu2 {
+    font-family:'Hahmlet';
+    font-weight: 300;
+    font-size: 30px;
+    margin-top: 25px;
+    margin-left: 80px;
+  }
+  
+  .loginheadermenu3 {
+    font-family: 'Hahmlet';
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-left: 600px;
+  }
+  
+  .loginheadermenu4 {
+    font-family: 'Hahmlet';
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-left: 30px;
+  }
+  
+  .loginheadermenu1 a {
+    color:#333333;
+  }
+  
+  .loginheadermenu2 a {
+    color:#333333;
+  }
+  
+  .loginheadermenu3 a{
+    color:#668FA1;
+  }
+  
+  .loginheadermenu4 a{
+    color:#333333;
+  }
+  
+  .loginheadermenu1 a:hover{
+    color: #668FA1;
+    transition : 0.5s;
+  } 
+  
+  .loginheadermenu2 a:hover{
+    color: #668FA1;
+    transition : 0.5s;
+  }
+  
+  .loginheadermenu3 a:hover{
+    color: #668FA1;
+    transition : 0.5s;
+  }
+  
+  .loginheadermenu4 a:hover{
+    color: #668FA1;
+    transition : 0.5s;
+  }
+  
+  .loginheadercontainer {
+    width: 100%;
+    margin: 0 auto;
+    position: fixed;
+    background-color: #ffffff;
+    top: 0;
+    z-index: 20;
+  }
+  
+  .loginheader {
+    width: 1280px;
+    margin: 0 auto;
+    height: 120px;
+    
+  }

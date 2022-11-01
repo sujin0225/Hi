@@ -13,12 +13,49 @@ import { useLocation } from 'react-router-dom';
 import { useMatch } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { stringToQuery, queryToString } from '../pages/queryString';
+// import Options from '../pages/Options';
 import Calendar from '../pages/Calendar';
 import CountGuest from '../pages/CountGuest';
 import moment from 'moment';
 
-
 function AcmList(){
+  
+  const [roomInfoArr, setRoomInfoArr] = useState([]);
+  const [categoryActiveTab, setCategoryActiveTab] = useState(0);
+  const [starActiveTab, setStarActiveTab] = useState(0);
+  const [mainInfo, setMainInfo] = useState({
+    category: '',
+  });
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getMainInfo = location.search
+      .substr(location.search.indexOf('?') + 1)
+      .split('&');
+    setMainInfo({
+      category: getMainInfo[1].split('=')[1],
+    });
+  }, []);
+
+
+  useEffect(() => {
+    const queryObject = stringToQuery(location.search);
+    console.log(location.search);
+    const newObj = {
+    };
+    const queryId = queryToString({ ...queryObject, ...newObj });
+    navigate(`/search${queryId}`);
+}, [] );
+
+
+  useEffect(() => {
+    axios.get(`/accommodation/list${location.search}`)
+    .then(res => setData(res.data))
+  },[]);
+
+
+  console.log(location)
 
   const [selected, setSelected] = useState(null)
   const toggle = (i) => {
@@ -27,26 +64,16 @@ function AcmList(){
       }
       setSelected(i)
   }
-
   const [contents, setContents] = useState(null);
   const [loading, setLoading] = useState(false);
   let [listdata] = useState(acmlistdata)
-  let [입력값, 입력값변경] = useState('');
+  const [date, setDate] = useState({ start: null, end: null });
   const [acmlist, setAcmlist] = useState([]);
   const {id} = useParams();
-  const [date, setDate] = useState({ start: null, end: null });
   const [adult, setAdult] = useState(1);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(6);
-  
-  
-  useEffect(() => {
-    axios.get('/accommodation')
-    .then(res => setData(res.data))
-  },[]);
-
-
   const handlePageChange = (page) => { setPage(page); };
   const itemChange = (e) => {
     setItems(Number(e.target.value))
@@ -63,7 +90,6 @@ function AcmList(){
     console.log(JSON.stringify(e.target.value))
   };
 
-  const navigate = useNavigate();
 
   const goToList = () => {
     const newObj = {
@@ -76,9 +102,6 @@ function AcmList(){
     navigate(`/search${queryString}`);
   };
 
-  moment.updateLocale("es", {
-    invalidDate: ''
-  });
 
   const handleDateChange = ({ startDate, endDate }) => {
     setDate({ start: startDate, end: endDate });
@@ -95,6 +118,11 @@ function AcmList(){
   };
 
 console.log(items*(page-1), items*(page-1)+items)
+
+
+
+console.log(items*(page-1), items*(page-1)+items)
+
 
 
   return(
@@ -115,7 +143,7 @@ console.log(items*(page-1), items*(page-1)+items)
             <Link to="/Login">LOGIN</Link>
             </div>
             <div className='acmlistheadermenu4'>
-            <Link to="/Signup">JOIN</Link>
+            <a href='#1'>JOIN</a>
             </div>
             </div>
             </div>
@@ -176,7 +204,7 @@ console.log(items*(page-1), items*(page-1)+items)
           <div data-aos="fade-up" data-aos-once="true" className='AcmMain'>
           <div className='lodgingbox2'>
           <Link to={`/Acm/${content.id}`} >
-            <img src = {content.imageUrls[0]} width='450' height='370'/>
+            <img src = {content.imageUrls[i]} width='450' height='370'/>
             <div className='lodgingtitle'>{content.nameKor}</div>
             <div className='lodgingcontent'>{content.region}</div>
             <div className='lodgingcontent1'>{content.priceKor}원~</div>
@@ -255,9 +283,6 @@ const data1 = [
   }
 ]
 
-const STAR = ['5', '4', '3', '2', '1'];
-const SORTING_CATEGORY = ['1', '2', '3', '4'];
-
 const RoomlistsWrapper = styled.div`
   border: 3px solid orange;
   display: flex;
@@ -270,7 +295,6 @@ const ListsWrapper = styled.div`
 `;
 
 const RoomInfoWrap = styled.div``;
-
 
 const SearchWrap = styled.div`
   ${({ theme }) => theme.flexCenter};
@@ -294,6 +318,5 @@ const SearchBtn = styled.div`
   };
 `
 const MIN_ADULT_NUM = 1;
-
 
 export default AcmList;

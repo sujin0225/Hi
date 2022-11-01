@@ -10,6 +10,7 @@ import lodgingphoto1 from '../img/숙소메인.png'
 import lodgingphoto2 from '../img/숙소1.png'
 import axios from "axios";
 import { Routes, Route, Link, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -26,6 +27,13 @@ function Acm(){
     const [acm, setAcm] = useState([]);
     const { id } = useParams();
     const[position, setPosition] = useState(0);
+    const { pathname } = useLocation();
+    const [data, setData] = useState([]);
+    const [roomdata, setRoomData] = useState([]);
+    const [products, setProduct] = useState({});
+    const [content, setContent] = useState({});
+    const location = useLocation();
+    console.log(location);
 
     function onScroll(){
       setPosition(window.scrollY)
@@ -43,48 +51,52 @@ function Acm(){
       setToggleState(index);
     };
 
-
-
-    // useEffect(() => {
-    //   axios({
-    //     method:'GET',
-    //     url:'http://3.34.183.59:8080/accommodation/list'
-    //   }).then(response => setAcm(response.data))
-    // })
-
-    // useEffect(() => {
-    //   axios.get('http://3.34.183.59:8080/accommodation/list').then((data) => {
-    //     setProduct(data.data.acmlist.find((acm) => acm.id == id));
-    //   })
-    // })
-
-
-
     useEffect(() => {
-      axios({
-        method:'GET',
-        url:'http://3.34.183.59:8080/accommodation/list'
-      }).then(response => setAcm(response.data.find((acm)=>acm.id==id)))
-    })
-  
+      window.scrollTo(0,0);
+  }, [pathname]);
 
   
+
+useEffect(() => {
+  axios.get(`/accommodation/${id}`)
+  .then(res => setData(res.data))
+},[]);
+
+useEffect(() => {
+  axios.get(`/accommodation/${id}`)
+  .then(res => setRoomData(res.data.rooms))
+},[]);
 
 
 return(
     <div className="Acm">
-      {/* <ul>
-        {acm.map(post => (
-          <li key={post.id}>{post.nameKor}</li>
-        ))}
-      </ul> */}
+      <div className='acmlistheadercontainer'>
+      <div className="acmlistcontainer">
+        <div className="acmlistheader">
+          <div className="acmlistheaderlogo">
+          <Link to="/">하이</Link>
+            <div className='acmlistheadermenu1'>
+            <Link to="/AcmList">숙소</Link>
+            </div>
+            <div className='acmlistheadermenu2'>
+            <Link to="/Join">커뮤니티</Link>
+            </div>
+            <div className='acmlistheadermenu3'>
+            <Link to="/Login">LOGIN</Link>
+            </div>
+            <div className='acmlistheadermenu4'>
+            <Link to="/Signup">JOIN</Link>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <Link to="/AcmList"></Link>
         <div className="container">
-            <div className="lodgingtit">{acm.nameKor}</div>
-            <div className="lodgingprice">{acm.priceKor}원~<div className='lodbox'></div></div>
-            
+            <div className="lodgingtit">{data.nameKor}</div>
+            <div className="lodgingprice"><div className='lodbox'></div></div>
          </div>
          <>
-         
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -99,16 +111,15 @@ return(
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
-        <SwiperSlide><img src = {lodgingphoto1} width='100%'/></SwiperSlide>
+        <SwiperSlide><img src = {(data.imageUrls ?? [])[0]} width='100%' height='700'/></SwiperSlide>
+        <SwiperSlide><img src = {(data.imageUrls ?? [])[1]} width='100%' height='700'/></SwiperSlide>
+        <SwiperSlide><img src = {(data.imageUrls ?? [])[2]} width='100%' height='700'/></SwiperSlide>
+        <SwiperSlide><img src = {(data.imageUrls ?? [])[3]} width='100%' height='700'/></SwiperSlide>
+        <SwiperSlide><img src = {(data.imageUrls ?? [])[4]} width='100%' height='700'/></SwiperSlide>
+        <SwiperSlide><img src = {(data.imageUrls ?? [])[5]} width='100%' height='700'/></SwiperSlide>
+        <SwiperSlide><img src = {(data.imageUrls ?? [])[6]} width='100%' height='700'/></SwiperSlide>
       </Swiper>
+
     </>
     <div className="container01">
       <div className="bloc-tabs">
@@ -147,71 +158,40 @@ return(
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
          CHECK IN / OUT
+         
          <div className='text'>{checkin}</div>
-         <img src = {lodgingphoto2} />
+         {/* <Link to={`/Room/${data.rooms &&(data.rooms??[])[0].id}`}>
+         <img src = {data.rooms &&(data.rooms??[])[0].imageUrl} />
          <div className='textbox'>
-         <div className='text1'>{room[0]}</div>
-         <div className='text2'>{reservation[0]}</div>
-         <div className='text3'>{room1[0]}</div>
-         <div className='text4'>{people[2]}</div>
-         <div className='text5'>{check[0]}</div>
-         <div className='text6'>{peoplecheck[0]}</div>
-         <div className='text7'>{roomprice[0]}</div>
+         <div className='text1'>{data.rooms &&(data.rooms??[])[0].name}</div>
+         <div className='text3'>{data.rooms &&(data.rooms??[])[0].type}</div>
+         <div className='text4'>{data.rooms &&(data.rooms??[])[0].numberPeople}명</div>
+         <div className='text7'>{data.rooms &&(data.rooms??[])[0].price}원</div>
         </div>
-        <div className='text8'></div>
-        <img src = {lodgingphoto2} />
-        <div className='textbox'>
-        <div className='text1'>{room[1]}</div>
-        <div className='text2'>{reservation[0]}</div>
-        <div className='text3'>{room1[1]}</div>
-        <div className='text4'>{people[0]}</div>
-        <div className='text5'>{check[0]}</div>
-        <div className='text6'>{peoplecheck[0]}</div>
-        <div className='text7'>{roomprice[0]}</div>
-        <div className='text8'></div>
-        </div>
-        <div className='text8'></div>
-        <img src = {lodgingphoto2} />
-        <div className='textbox'>
-        <div className='text1'>{room[2]}</div>
-        <div className='text2'>{reservation[1]}</div>
-        <div className='text3'>{room1[2]}</div>
-        <div className='text4'>{people[1]}</div>
-        <div className='text5'>{check[0]}</div>
-        <div className='text6'>{peoplecheck[1]}</div>
-        <div className='text7'>{roomprice[1]}</div>
-        <div className='text8'></div>
-        </div>
-        <div className='text8'></div>
-        <img src = {lodgingphoto2} />
-        <div className='textbox'>
-        <div className='text1'>{room[3]}</div>
-        <div className='text2'>{reservation[0]}</div>
-        <div className='text3'>{room1[2]}</div>
-        <div className='text4'>{people[0]}</div>
-        <div className='text5'>{check[0]}</div>
-        <div className='text6'>{peoplecheck[1]}</div>
-        <div className='text7'>{roomprice[1]}</div>
-        <div className='text8'></div>
-        </div>
-        <div className='text8'></div>
-        <img src = {lodgingphoto2} />
-        <div className='textbox'>
-        <div className='text1'>{room[4]}</div>
-        <div className='text2'>{reservation[0]}</div>
-        <div className='text3'>{room1[2]}</div>
-        <div className='text4'>{people[0]}</div>
-        <div className='text5'>{check[0]}</div>
-        <div className='text6'>{peoplecheck[1]}</div>
-        <div className='text7'>{roomprice[1]}</div>
-        </div>
+        </Link> */}
+        {roomdata.map((item,i) => {
+        return (
+          <div className='Acm'>
+          <Link to={`/Room/${item.id}`}>
+          <div className='text0'><img src = {item.imageUrl } width='529' height='353'/></div>
+          <div className='textbox'>
+            
+          <div className='text1'>{item.name}</div>
+          <div className='text3'>{item.type}</div>
+          <div className='text4'>{item.numberPeople}명</div>
+          <div className='text7'>{item.price}원</div>
+          </div>
+          </Link>
+         </div>
+        )
+      })}
         <div className='textbox'></div>
         </div>
         
         <div className={toggleState === 2 ? "content  active-content" : "content"}>
             숙소 소개
             <div className='lodgingtext1'>
-              {acm.introduction}
+              {data.introduction}
             </div>
           <div className='textbox'></div>
         </div>
@@ -222,8 +202,7 @@ return(
             <div className='servicebox1'>
               <div className='servicetext2'>
               <div className='servicetext3'>
-              {acm.filtering}
-              
+              {data.filtering}
               </div>
               </div>
               </div>
@@ -244,7 +223,7 @@ return(
       <div className='textbox'></div>
         </div>
         <div className={toggleState === 4 ? "content  active-content" : "content"}>
-          {acm.location}
+          {data.directions}
           <div className='textbox'></div>
         </div>
         <div className={toggleState === 5 ? "content  active-content" : "content" }>
@@ -288,8 +267,9 @@ return(
         </div>
     </div>
 )
-
+  
 }
+
 
 // function TabContent({tab}){
 
@@ -309,6 +289,7 @@ return(
 //     </div>
 //     )
 // }
+
 
 
 export default Acm;

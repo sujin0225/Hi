@@ -8,10 +8,23 @@ return(
         <div className="paymentcontainer">
     <div className="paymenttitle">예약이 완료되었습니다</div>
     </div>
-    <div className="paymentbox"></div>
+    <div className="paymentbox">
+      <div className="paymentcontainer">
+      <div className="paymentboxtext1">예약 코드</div>
+      <div className="paymentboxtext2">숙소</div>
+      <div className="paymentboxtext5">객실</div>
+      <div className="paymentboxtext5">날짜</div>
+      <div className="paymentboxtext3">235436</div>
+      <div className="paymentboxtext4">하이파리 민박</div>
+      <div className="paymentboxtext4">2인실</div>
+      <div className="paymentboxtext4">2022.05.15 일</div>
+    </div>
+    </div>
     <div className="paymentcontainer">
     <div className="paymentlinebox1">
-        <div className="paymentlinebox2"></div>
+        <div className="paymentlinebox2">
+          <div className="paymentlinetext1">2022.05.15</div>
+        </div>
         <div className="paymentlinebox3"></div>
     </div>
     </div>

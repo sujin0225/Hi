@@ -28,6 +28,55 @@
     background-color: #F8F8F8;
 }
 
+.paymentboxtext1{
+    clear: both;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 55px;
+}
+
+.paymentboxtext2{
+    margin-left: 110px;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 55px;
+    margin-right: 207px;
+}
+
+.paymentboxtext3{
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 15px;
+    font-weight: 400;
+    clear: both;
+}
+
+.paymentboxtext4{
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 15px;
+    font-weight: 400;
+    margin-left: 126px;
+}
+
+.paymentboxtext5{
+    margin-left: 20px;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 55px;
+    margin-right: 207px;
+}
+
 .paymentlinebox1{
   width: 100%;
   height: 326px;
@@ -55,4 +104,12 @@
     background-color: #ffffff;
     margin-right: 97px;
     float: right;
+}
+
+.paymentlinetext1{
+    float: left;
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    font-weight: 400;
 }

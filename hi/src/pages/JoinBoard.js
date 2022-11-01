@@ -5,24 +5,71 @@ import Scrap from '../img/그림22.png'
 import share from '../img/그림23.png'
 import joinphoto from '../img/1.png'
 import arrow from '../img/그림26.png'
+import { Routes, Route, Link } from 'react-router-dom'
+import axios from 'axios';
+import { useParams } from 'react-router-dom'
 
 function JoinBoard(){
 
 window.scrollTo(0,0);
 
-let [JoinBoardTitle] = useState(['파리 여행하시는 분 계신가요?']);
-let [joinboarddate] = useState(['2022.05.13 오후 10시 49분']);
-let [joinboardtitletext] = useState(['프랑스파리','2022-05-05 ~ 2022-05-19','배고프다','4명','여']);
-let [jointext] = useState(['파리에 2주동안 있을 예정입니다','혼자 있으면 심심해서 같이 식사하고 사진 찍어주실 수 있는 분 구해요~~~!'])
+const { id } = useParams();
+const [data, setData] = useState([]); 
+const [comdata, setComData] = useState([]); 
+const [replydata, setReplyData] = useState([]); 
+
+useEffect(() => {
+    axios.get(`/api/board/join/${id}`)
+    .then(res => setData(res.data.board))
+  },[]);
+
+useEffect(() => {
+    axios.get(`/api/board/join/${id}`)
+    .then(res => setComData(res.data.comments))
+  },[]);  
+
+  useEffect(() => {
+    axios.get(`/api/board/join/${id}`)
+    .then(res => setReplyData(res.data.comments[0].reply))
+  },[]);    
+
+// useEffect(() => {
+//     axios.get(`/api/board/join/${id}`)
+//     .then(res => setReplyData(res.data))
+//   },[]);  
+
+   
 
     return(
         <div className="JoinBoard">
+            <div className='joinheadercontainer'>
+      <div className="joincontainer">
+        <div className="joinheader">
+          <div className="joinheaderlogo">
+          <Link to="/">하이</Link>
+            <div className='joinheadermenu1'>
+            <Link to="/AcmList">숙소</Link>
+            </div>
+            <div className='joinheadermenu2'>
+            <Link to="/Join">커뮤니티</Link>
+            </div>
+            <div className='joinheadermenu3'>
+            <Link to="/Login">LOGIN</Link>
+            </div>
+            <div className='joinheadermenu4'>
+            <Link to="/Signup">JOIN</Link>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <Link to="/AcmList"></Link>
             <div className="container">
                 <div className='joinboardtitle'>
-                    {JoinBoardTitle[0]}
+                    {data.title}
                 </div>
                 <div className='joinboarddate'>
-                    {joinboarddate[0]}
+                    {data.created_at}
                 </div>
                 <div className='joinboardline'></div>
                 <div className='joinboardbutton1'><img src = {good} width='21' height='21' margin-left='8' />좋아요</div> 
@@ -45,41 +92,56 @@ let [jointext] = useState(['파리에 2주동안 있을 예정입니다','혼자
                     성별
                 </div>
                 </div>
-              
                 <div className='joinboardtextbox2'>
                 <div className='joinboardtext1'>
-                    {joinboardtitletext[0]}
+                {data.region}
                     </div>
                     <div className='joinboardtext2'>
-                    {joinboardtitletext[1]}
+                    {data.go_with_start}{" "}~{" "}{data.go_with_end}
                 </div>
                 <div className='joinboardtext3'>
-                    {joinboardtitletext[2]}
+                    {data.nickname}
                 </div>
                 <div className='joinboardtext3'>
-                    {joinboardtitletext[3]}
+                    {data.together}명
                 </div>
                 <div className='joinboardtext4'>
-                    {joinboardtitletext[4]}
+                    {data.gender}
                 </div>
                 </div>
-
                 <div className='joinboardbox1'></div>
-                <img src = {joinphoto}/>
+                {/* <img src = {joinphoto}/> */}
                 <div className='joinboardbox2'></div>
-                <div className='joinboardmaintext1'>{jointext[0]}</div>
-                <div className='joinboardmaintext2'>{jointext[1]}</div>
-                <div className='joinboardline'></div>
-                <div className='joinboardcombox'>
-                <div className='joinboardcom1'>튜브</div>
-                <div className='joinboardcom2'>와 동행 참여하고 싶어요!~</div>
+                <div className='joinboardmaintext1'>{data.content}</div>
+    {comdata.map((item,i) => {
+        return (
+         <div className='JoinBoard'>
+            <div className='joinboardline'></div>
+            <div className='joinboardcombox'>
+            <div className='joinboardcom1'>{item.nickname}</div>
+            <div className='joinboardcom3'>{item.created_at}</div>
+            <div className='joinboardcom2'>{item.content}</div>
+            </div>
+         </div>
+          
+        )
+      })}
+    {replydata.map((item,i) => {
+        return (
+         <div className='JoinBoard'>
+            <div className='joinboardline'></div>
+            <div className='joinboardcombox1'>
+            <div className='joinboardcombox2'>
+            <div className='joinboardcom1'>{item.nickname}</div>
+            <div className='joinboardcom3'>{item.created_at}</div>
+            <div className='joinboardcom2'>{item.content}
                 </div>
-                <div className='joinboardline'></div>
-                <div className='joinboardcombox1'>
-                <div className='joinboardcombox2'>
-                <div className='joinboardcom1'>배고프다</div>
-                <div className='joinboardcom2'>네 알겠습니다~~~~~</div>
-                </div></div>
+            </div>
+            </div>
+         </div>
+        )
+      })}
+
                 <div className='joinboardline1'></div>
                 <div className='joinboardcombox3'>
                 <div className='joinboardcommand'>

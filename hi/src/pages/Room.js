@@ -7,10 +7,14 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import { useEffect , useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function Room(){
    
     const[position, setPosition] = useState(0);
+    const { pathname } = useLocation();
 
     function onScroll(){
       setPosition(window.scrollY)
@@ -28,6 +32,13 @@ function Room(){
       setToggleState(index);
     };
 
+    useEffect(() => {
+      window.scrollTo(0,0);
+  }, [pathname]);
+
+  useEffect(() => {
+    Aos.init({duration: 2000});
+  }, []);
 
 
 return(
@@ -62,7 +73,7 @@ return(
         <SwiperSlide><img src = {roomphoto} width='100%' height='600'/></SwiperSlide>
         <SwiperSlide><img src = {roomphoto} width='100%' height='600'/></SwiperSlide>
       </Swiper>
-      <div className='roomcontainer'>
+      <div data-aos="fade-up" data-aos-once="true" className='roomcontainer'>
         <div className='roominfo'>
         Room Info
         <div className='roominfo2'>

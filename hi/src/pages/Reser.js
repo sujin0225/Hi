@@ -3,7 +3,7 @@ import plus from '../img/그림33.png'
 import { useEffect, useRef, useState } from 'react';
 import drop from '../img/그림9.png'
 import check from '../img/그림8.png'
-
+import { useLocation } from 'react-router-dom';
 
 function Reser(){
   const [입력값, 입력값변경] = useState("");
@@ -13,7 +13,7 @@ function Reser(){
   const [marketingCheck, setMarketingCheck] = useState(false);
   const [count, setCount] = useState(0);
   const [peoplecount, setPeopleCount] = useState(0);
-
+  const { pathname } = useLocation();
 
 
 
@@ -53,6 +53,9 @@ function Reser(){
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0,0);
+}, [pathname]);
 
 
 return(

@@ -12,114 +12,206 @@ import { DatePicker } from 'antd';
 import 검색 from '../img/검색.png'
 import 추가 from '../img/그림7.png'
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { stringToQuery, queryToString } from '../pages/queryString';
+import qs from "qs";
+import Pagination from 'react-js-pagination'
+import styled from 'styled-components';
+import CountGuest from '../pages/CountGuest';
+import moment from 'moment';
+import CalendarJoin from '../pages/CalendarJoin';
+import { useParams } from 'react-router-dom'
+
+
 
 function Join(){
-
-    let [jointitle, b] = useState(['파리 여행하시는 분 계신가요?', '같이 맛있는거 드실 분!', '파리에 2주정도 있을 예정입니다...', '점심하실수 있으신분 구해요!!...', 
-    '부분 동행 하실 분!','시티 투어 하실 분 있으신가요?', '햄버거 같이 드실 분!!', '전시 좋아하시는 분~~'
-    ]);
+    const { id } = useParams();
+    const [data, setData] = useState([]);
     const { RangePicker } = DatePicker;
     const[filter,setfilter] = useState(['']);
     let [join, setjoin] = useState(['']);
-    // let [test, setTest] = useState(null);
+    const [page, setPage] = useState(1);
+    const [items, setItems] = useState(6);
+    const [posts, setPosts] = useState([]); 
+    const [date, setDate] = useState({ start: null, end: null });
+    const [adult, setAdult] = useState(1);
+    const navigate = useNavigate();
+    const [comdata, setComData] = useState([]); 
 
-    // useEffect(() => {
-    //   axios.get('http://54.180.155.179:8080/accommodation/list')
-    //   .then((결과)=>{ 
-    //    console.log(결과.data)
-    //   })
-    //   .catch(()=>{
-    //     console.log('실패')
-    //   })  
-    // })
+        useEffect(() => {
+          axios.get(`/api/board/join/list`, {
+            params: {
+              page:'1',
+              pageSize:'100'
+            }
+          })
+          .then(res => setPosts(res.data.boards))
+        },[]);
     
+        // useEffect(() => {
+        //   axios.get('/accommodation')
+        //   .then(res => setData(res.data))
+        // },[]);
 
-    const [boards, setBoards] = useState([]);
+        // useEffect(() => {
+        //   axios.get(`/api/comments/list`, {
+        //     params: {
+        //       board_id:''
+        //     }
+        //   })
+        //   .then(res => setPosts(res.data.boards))
+        // },[]);
 
+        
 
-    useEffect(() => {
-      axios({
-        method:'GET',
-        url:'http://54.180.155.179:8080/accommodation/list'
-      }).then(response => setBoards(response.data))
-    })
-  
-
-
-    const menu = (
-        <Menu
-          items={[
-            {
-              label: <a href="#">1st menu item</a>,
-              key: '0',
-            },
-            {
-              label: <a href="#">2nd menu item</a>,
-              key: '1',
-            },
-            {
-              type: 'divider',
-            },
-            {
-              label: '3rd menu item',
-              key: '3',
-            },
-          ]}
-        />
-      );
+    
+    const handleDateChange = ({ startDate, endDate }) => {
+      setDate({ start: startDate, end: endDate });
+    };
       
+      const handlePageChange = (page) => { setPage(page); };
+      const itemChange = (e) => {
+        setItems(Number(e.target.value))
+      
+      }
+      
+      console.log(items*(page-1), items*(page-1)+items)
+
+      const [region, setRegion] = useState({
+        region: '',
+        
+      });
+
+      const [title, setTitle] = useState({
+        title: '',
+        
+      });
+    
+      const regInput = e => {
+        setRegion({ ...region, region: e.target.value });
+        console.log(JSON.stringify(e.target.value))
+      };
+
+      const titInput = e => {
+        setTitle({ ...title, title: e.target.value });
+        console.log(JSON.stringify(e.target.value))
+      };
+
+
+    const goToList = () => {
+      const newObj = {
+        region: JSON.stringify(region.region).replace(/"/g,""),
+        title: JSON.stringify(title.title).replace(/"/g,""),
+        go_with_start: moment(date.start).format('YYYY-MM-DD'),
+        go_with_end: moment(date.end).format('YYYY-MM-DD'),
+      };
+      const queryString = queryToString(newObj);
+      navigate(`/searchjoin${queryString}`);
+    };
+
+    moment.updateLocale("es", {
+      invalidDate: ''
+    });
+
+
+    
+  
 
     return(
         
         <div className="Join">
-   {/* <ul>
-    {boards.map(board => (
-      <li key={board.id}>{board.nameKor}</li>
-    ))}
-   </ul>  */}
+          <div className='joinheadercontainer'>
+      <div className="joincontainer">
+        <div className="joinheader">
+          <div className="joinheaderlogo">
+          <Link to="/">하이</Link>
+            <div className='joinheadermenu1'>
+            <Link to="/AcmList">숙소</Link>
+            </div>
+            <div className='joinheadermenu2'>
+            <Link to="/Join">커뮤니티</Link>
+            </div>
+            <div className='joinheadermenu3'>
+            <Link to="/Login">LOGIN</Link>
+            </div>
+            <div className='joinheadermenu4'>
+            <Link to="/Signup">JOIN</Link>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <Link to="/AcmList"></Link>
             <div className="container"> 
                 <div className='joinbox1'>
                     동행자 구하기
-                
                 </div>
                 <div className='caltitle'>
-                {/* <div style={{}}> */}
                 <Calendar onChange={(value) => {
                     alert(`Your selected ${value.format('YYYY-MM-DD')}`)}} />
-                    {/* </div> */}</div>
+                  </div>
                 </div>
-                <div className="joinsearchbox">
-                <div className="joinsearchbox1">
-              {/* <div className="joinsearchbar">  */}
-                    <Dropdown overlay={menu} trigger={['click'] }>
-                        <a onClick={(e) => e.preventDefault()}>
-                            <Space style={{gap:94 , marginTop:110, paddingLeft:220, paddingRight:40}} >전체<DownOutlined /></Space></a></Dropdown>
-                            <div className='joinsearchdata'>
-                                    <input type="date" data-placeholder="동행시작일" required aria-required="ture"></input></div>
-                                    <div className='joinsearchdata'>
-                                        <input type="date" data-placeholder="동행종료일" required aria-required="ture"></input></div>
-                                        <div className='joinbutton'><button type='button' onClick={()=>{ }}></button>기간 조회
-                                        </div>
-                                        <div className="joinsearchin">
-                                          <div className="joinsearch1">
-                                            <input placeholder="검색어를 입력하세요" onChange={(e)=> {}}></input>
-                                            <a href='#1'><img src = {검색}/></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                   
-                                        <div className="container">
-                                            <div className='write'>
-                    <button type='button' onClick={()=>{
-                
-            }}>작성하기</button></div>
+        <div className="joinsearchbox">
+        <div className="container">
+            <div className="joinsearchbar">
+            <SearchWrap>  
+              <div className="joinsearchdata">
+            <input type="text" onChange={regInput} placeholder = '지역' region={region}/>   
+            </div> 
+              <div className='mainsearch2'>
+              <CalendarJoin
+                start={date.start}
+                end={date.end}
+                handleDateChange={handleDateChange}
+              />
+              </div>
+              <div className='Listsearch2'>
+              </div>
+              <SearchBtn onClick={goToList}>조회</SearchBtn>
+              <div className="joinsearch1">
+            <input type="text" onChange={titInput} placeholder = '제목을 입력해 보세요' title={title}/>  
+            </div>
+            </SearchWrap>
+            </div>
+        </div>  
+        </div>
+        <div className="container">
+          <Link to="/JoinBoardWrite">
+              <div className='write'>
+                <button type='button' onClick={()=>{
+            }}>작성하기</button></div></Link>
             <div className="joinbox">
-                <Joincontent jointitle={jointitle}></Joincontent>
+                {posts&&posts.slice(
+        items*(page-1),
+        items*(page-1)+items,
+        // contents.list
+      ).map((item,i) => {
+        return (
+         
+         <div className="jointextbox1">
+          {/* <Link to={`/JoinBoard/${item.board_id}`} > */}
+          <Link to={`/JoinBoard/${item.board_id}`} >
+            <div className="jointexttitl1">{item.title}</div>
+            <div className="jointextcon">{item.content}</div>
+            <div className="jointextcon1">동행 기간{" "}{item.go_with_start}{" "}~{" "}{item.go_with_end}</div>
+            <div className="jointexticon">
+            <img src = {추가} width='55' height='55'/>
+            </div>
+            </Link>
+          </div>
+          
+        )
+      })}
                 </div>
-                <div className="joinmorebutton">더보기
                 </div>
-                </div>
+                <Pagination
+          activePage={page}
+          itemsCountPerPage={items}
+          totalItemsCount={posts.length-1}
+          pageRangeDisplayed={6}
+          onChange={handlePageChange}>
+        </Pagination>
                 <div className="interval"></div>
                 <div className='footerbg'>
           <div className='footer'>
@@ -152,72 +244,35 @@ function Join(){
     )
 }
 
-function Joincontent(props){
-    return (
-      <div className='Join'>
-          <div className="jointextbox1">
-          <Link to="/JoinBoard">
-            <div className="jointexttitl1">{props.jointitle[0]}</div>
-            <div className="jointextcon">{props.jointitle[3]}</div>
-            <div className="jointextcon1">동행 기간 2022 - 05 - 10 ~ 2022 - 05 - 11</div>
-            <div className="jointexticon">
-            <img src = {추가} width='55' height='55'/>
-            </div>
-            </Link>
-          </div>
-            <div className="jointextbox2">
-            <Link to="/JoinBoard">
-            <div className="jointexttitl1">{props.jointitle[1]}</div>
-            <div className="jointextcon">파리 여행하시는 분 계신가요?</div>
-            <div className="jointextcon1">동행 기간 2022 - 05 - 10 ~ 2022 - 05 - 11</div>
-            <div className="jointexticon">
-            <img src = {추가} width='55' height='55'/>
-            </div>
-            </Link>
-            </div>
-            <div className="jointextbox2">
-            <Link to="/JoinBoard">
-            <div className="jointexttitl1">{props.jointitle[2]}</div>
-            <div className="jointextcon">오후에 같이 부분 동행 하실 분 구해요~!...</div>
-            <div className="jointextcon1">동행 기간 2022 - 05 - 20 ~ 2022 - 05 - 22</div>
-            <div className="jointexticon">
-            <img src = {추가} width='55' height='55'/>
-            </div>
-            </Link>
-            </div>
-            <div className="jointextbox1">
-            <Link to="/JoinBoard">
-            <div className="jointexttitl1">{props.jointitle[3]}</div>
-            <div className="jointextcon">인앤아웃 햄버거 같이 드실 분...</div>
-            <div className="jointextcon1">동행 기간 2022 - 06 - 10 ~ 2022 - 06 - 15</div>
-            <div className="jointexticon">
-            <img src = {추가} width='55' height='55'/>
-            </div>
-            </Link>
-            </div>
-            <div className="jointextbox2">
-            <Link to="/JoinBoard">
-            <div className="jointexttitl1">{props.jointitle[4]}</div>
-            <div className="jointextcon">{props.jointitle[3]}</div>
-            <div className="jointextcon1">동행 기간 2022 - 05 - 13 ~ 2022 - 05 - 13</div>
-            <div className="jointexticon">
-            <img src = {추가} width='55' height='55'/>
-            </div>
-            </Link>
-            </div>
-            <div className="jointextbox2">
-            <Link to="/JoinBoard">
-            <div className="jointexttitl1">{props.jointitle[5]}</div>
-            <div className="jointextcon">밤에 시티 투어 하려고 하는데 혹시...</div>
-            <div className="jointextcon1">동행 기간 2022 - 05 - 10 ~ 2022 - 05 - 11</div>
-            <div className="jointexticon">
-            <img src = {추가} width='55' height='55'/>
-            </div>
-            </Link>
-            </div>
-          </div>
-    )
-  }
+const SearchWrap = styled.div`
+  ${({ theme }) => theme.flexCenter};
+  margin-top: 20px;
+`;
 
+const MIN_ADULT_NUM = 1;
+
+const SearchBtn = styled.div`
+  ${({ theme }) => theme.flexCenter};
+  // float:right;
+  float:left;
+  margin-top:90px;
+  margin-left:29px;
+  width: 151px;
+  height: 44px;
+  color: #FEFEFE;
+  // border: 1px solid #FFFFFF;
+  background-color: #668FA1;
+  outline: none;
+  cursor: pointer;
+  font-size:18px;
+  padding-left:5px;
+  padding-top:7px;
+  font-family:'Noto Sans KR';
+  // &:hover{
+  //   background-color: #668FA1;
+  //   color: black;
+  //   transition : 0.5s;
+  // };
+`
 
 export default Join

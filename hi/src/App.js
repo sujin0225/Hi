@@ -3,19 +3,22 @@ import './App.css';
 import './pages/AcmList.css';
 import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useLocation } from 'react-router-dom';
 import "swiper/css";
 import "./styles.css";
 import { Routes, Route, Link } from 'react-router-dom'
 import AcmList from './pages/AcmList';
 import Join from './pages/Join';
-import Search from './pages/ProductSearch';
 import Acm from './pages/Acm';
 import JoinBoard from './pages/JoinBoard';
 import Room from './pages/Room';
 import Mypage from './pages/Mypage';
 import Reser from './pages/Reser';
 import Payment from './pages/Payment';
+import Login from './pages/Login';
 import ChangeUserInfo from './pages/ChangeUserInfo';
+import JoinBoardWrite from './pages/JoinBoardWrite';
+import JoinSearch from './pages/JoinSearch';
 import bg1 from './img/그림1.png'
 import bg2 from './img/그림4.png'
 import travel1 from './img/여행지1.png'
@@ -28,6 +31,20 @@ import travel7 from './img/여행지7.png'
 import travel8 from './img/여행지8.png'
 import travel9 from './img/여행지9.png'
 import add from './img/그림7.png'
+import { Pagination, Navigation } from "swiper";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import Search from './pages/Search';
+import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
+import { stringToQuery, queryToString } from './pages/queryString';
+import styled from 'styled-components';
+import Calendar from './pages/Calendar';
+import CountGuest from './pages/CountGuest';
+import RoomLists from './pages/RoomLists';
+import AcmListSearch from './pages/AcmListSearch';
+import Location from './pages/Location';
+import Signup from './pages/Signup';
 
 
 function App() {
@@ -36,17 +53,69 @@ let [글제목, b] = useState(['파리 여행하시는 분 계신가요?', '같�
 let [글내용, a] = useState(['파리에 2주정도 있을 예정입니다...', '여행기간 중 점심하실수 있으신분 구해요!!...']);
 let [기간, c] = useState(['동행 기간 2022 - 05 - 05 ~ 2022 - 05 - 19', '동행 기간 2022 - 05 - 10 ~ 2022 - 05 - 11']);
 const [products, setProducts] = useState([]);
-  const [입력값, 입력값변경] = useState("");
-  // const convertPrice = (price) => {
-  //   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  // }
+const [data, setData] = useState([]);
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0,0);
+}, [pathname]);
 
-  const onSubmit = async () => {
-    window.location.href = "/search/" + 입력값;
+
+  useEffect(() => {
+    Aos.init({duration: 2000});
+  }, []);
+  const [accomoType, setAccomoType] = useState('');
+  const [location, setLocation] = useState();
+  const [date, setDate] = useState({ start: null, end: null });
+  const [adult, setAdult] = useState(1);
+  const [room, setRoom] = useState(1);
+
+  const navigate = useNavigate();
+
+  const goToList = () => {
+    const newObj = {
+      checkInDate: moment(date.start).format('YYYY-MM-DD'),
+      checkOutDate: moment(date.end).format('YYYY-MM-DD'),
+      numberPeople: adult, 
+      region: JSON.stringify(region.region).replace(/"/g,""),
+    };
+    const queryString = queryToString(newObj);
+    navigate(`/search${queryString}`);
   };
+
+
+  const handleDateChange = ({ startDate, endDate }) => {
+    setDate({ start: startDate, end: endDate });
+  };
+  
+
+  const incrAdultQty = () => {
+     setAdult(adult + 1);
+  };
+
+  const decrAdultQty = () => {
+    adult === MIN_ADULT_NUM
+      ? alert('최소 선택 인원은 1명입니다')
+      : adult > 1 && setAdult(adult - 1);
+  };
+
+  const [region, setRegion] = useState({
+    region: '',
+    
+  });
+
+  const regInput = e => {
+    setRegion({ ...region, region: e.target.value });
+    console.log(JSON.stringify(e.target.value))
+  };
+
   
   return (
     <div className="App">
+            <Routes>
+            <Route path="/" element={
+              <>
+              <div className='headercontainer'>
       <div className="container">
         <div className="header">
           <div className="headerlogo">
@@ -58,45 +127,43 @@ const [products, setProducts] = useState([]);
             <Link to="/Join">커뮤니티</Link>
             </div>
             <div className='headermenu3'>
-            <a href='#1'>LOGIN</a>
+            <Link to="/Login">LOGIN</Link>
             </div>
             <div className='headermenu4'>
-            <a href='#1'>JOIN</a>
+           <Link to="/Signup">JOIN</Link>
+            </div>
             </div>
             </div>
             </div>
             </div>
             <Link to="/AcmList"></Link>
-            <Routes>
-            <Route path="/" element={
-              <>
               <div className='main'>
               <div className='main1'>
-            <div className='main2'>한인민박은 하이</div>              
+            <div className='main2'>한인민박은 하이
             <div className='mainsearch1'>
-              <input placeholder="도시명, 숙소명" onChange={(e)=> {입력값변경(e.target.value);
-              console.log(입력값);}}></input>
-              </div>
-              <div className='maindata1'>
-              <input type="date"data-placeholder="CHECK IN" required aria-required="ture" onChange={(e)=> { 입력값변경(e.target.value);
-              console.log(입력값);}}></input>
-              </div>
-              <div className='maindata2'>
-              <input type="date"data-placeholder="CHECK OUT" required aria-required="ture" onChange={(e)=> { 입력값변경(e.target.value);
-              console.log(입력값);}}></input>
-              </div>
+            <SearchWrap>  
+            <input type="text" onChange={regInput} placeholder = '지역' region={region}/>  
               <div className='mainsearch2'>
-              <img src = {bg1} width='39' height='39'/>
-            </div> 
-            <div className='mainsearch3'>내주변</div>
-            <div className='mainsearch4'>
-            <button type='button' onClick={()=>{
-                onSubmit();
-            }}>SEARCH</button></div>
+              <Calendar
+                start={date.start}
+                end={date.end}
+                handleDateChange={handleDateChange}
+              />
+              </div>
+              <CountGuest
+                adult={adult}
+                incrAdultQty={incrAdultQty}
+                decrAdultQty={decrAdultQty}
+              />
+              <SearchBtn onClick={goToList}>SEARCH</SearchBtn>
+            </SearchWrap>
+              </div>
+            </div>
             </div>
             </div>
             <div className="container">
-              <div className='content1'>인기 여행지
+            
+              <div data-aos="fade-up" data-aos-once="true" className='content1'>인기 여행지
               <div className='content2'>
               <Link to="/AcmList">MORE</Link></div>
                 <div className='content3'>
@@ -104,11 +171,7 @@ const [products, setProducts] = useState([]);
                 </div>
                 </div>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={9}
-        //pagination={{
-        //  clickable: true,
-        //}}
+      data-aos="fade-up" data-aos-once="true"
         breakpoints={{
           "@0.00": {
             slidesPerView: 1,
@@ -127,7 +190,17 @@ const [products, setProducts] = useState([]);
             spaceBetween: 50,
           },
         }}
-
+        pagination={{
+          type: "progressbar",
+        }}
+        navigation={true}
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+          slidesPerView={4}
+          spaceBetween={9}
+          //pagination={{
+          //  clickable: true,
+          //}}
         className="mySwiper"
       >
         <SwiperSlide><Link to="/AcmList"><img src = {travel1} /></Link></SwiperSlide>
@@ -140,8 +213,8 @@ const [products, setProducts] = useState([]);
         <SwiperSlide><Link to="/AcmList"><img src = {travel8} /></Link></SwiperSlide>
         <SwiperSlide><Link to="/AcmList"><img src = {travel9} /></Link></SwiperSlide>
       </Swiper>
-        
-      <div className='content1'>커뮤니티 
+     
+      <div data-aos="fade-up" data-aos-once="true" className='content1'>커뮤니티 
         <div className='content4'>
         <Link to="/Join">MORE</Link></div>
             <div className='content3'>
@@ -150,7 +223,7 @@ const [products, setProducts] = useState([]);
                 </Link>
               </div>
             </div>
-            <div className='box1'>
+            <div data-aos="fade-up" data-aos-once="true" className='box1'>
             <Link to="/JoinBoard">
               <div className='boxtitle'>{글제목[0]}</div>
                <div className='boxcontent1'>{글내용[0]}</div> 
@@ -158,7 +231,7 @@ const [products, setProducts] = useState([]);
                <div className='texticon'><img src = {add} width='55' height='55'/></div>
                </Link>
                </div>
-            <div className='box2'>
+            <div data-aos="fade-up" data-aos-once="true" className='box2'>
             <Link to="/JoinBoard">
               <div className='boxtitle'>{글제목[1]}</div>
               <div className='boxcontent1'>{글내용[1]}</div> 
@@ -194,19 +267,53 @@ const [products, setProducts] = useState([]);
         </div>
         </>
             }/>
-        <Route path="/AcmList" element={<AcmList products={products} setProducts={setProducts}/> }/>
+        <Route path="/AcmList" element={<AcmList data={data} setData={setData}/> }/>
         <Route path="/Join" element={<Join/> }/>
         <Route path="/Acm/:id" element={<Acm/>}/>
-        <Route path="/JoinBoard" element={<JoinBoard/>}/>
-        <Route path="/search/:입력값" element={<Search/>} />
+        <Route path="/JoinBoard/:id" element={<JoinBoard/>}/>
         <Route path="/Room/:id" element={<Room/>}/>
         <Route path="/Mypage" element={<Mypage/> }/>
         <Route path="/Reser/:id" element={<Reser/> }/>
         <Route path="/ChangeUserInfo" element={<ChangeUserInfo/> }/>
         <Route path="/Payment/:id" element={<Payment/> }/>
+        <Route path="/Login" element={<Login/> }/>
+        <Route path="/JoinBoardWrite" element={<JoinBoardWrite/> }/>
+        <Route path="/search" element={<AcmListSearch/>} />
+        <Route path="/searchjoin" element={<JoinSearch/>} />
+        <Route path="/Signup" element={<Signup/>} />
       </Routes>
     </div>
   );
 }
+
+const MIN_ADULT_NUM = 1;
+const MAX_ROOM_NUM = 9;
+const MIN_ROOM_NUM = 1;
+
+const SearchWrap = styled.div`
+  ${({ theme }) => theme.flexCenter};
+  margin-top: 20px;
+`;
+
+const SearchBtn = styled.div`
+  ${({ theme }) => theme.flexCenter};
+  // float:right;
+  float:left;
+  margin-top:25px;
+  width: 116px;
+  height: 44px;
+  color: ${({ theme }) => theme.white};
+  border: 1px solid #FFFFFF;
+  outline: none;
+  cursor: pointer;
+  font-size:18px;
+  padding-left:25px;
+  padding-top:7px;
+  &:hover{
+    background-color: #fff;
+    color: black;
+    transition : 0.5s;
+  };
+`
 
 export default App;

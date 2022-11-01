@@ -56,12 +56,13 @@ transition : 0.5s;
   height: 338px;
   border: 3px solid;
   border-color: #93B0BD;
-  margin-top: 20px;
+  margin-top: 23px;
   clear: right;
   float: left;
   cursor: pointer;
   background-color: transparent;
   color:#333333;
+  margin-right: 25px;
 }
 
 .jointextbox1:hover{
@@ -125,7 +126,7 @@ height: 800px;
 clear: both;
 }
 
-.joinmorebutton{
+/* .joinmorebutton{
 width: 271px;
 height: 58px;
 background-color: #668FA1;
@@ -137,35 +138,22 @@ padding-top: 10px;
 border:none;
 cursor: pointer;
 margin: 0 auto;
-}
+} */
 
 .joinsearchbox{
 background: #F8F8F8;
 height: 361px;
+width: 100%;
+
 }
 
 .joinsearchbox1 {
-  width: 1280px;
   margin:0px auto;
-  clear: both;
-  font-family: 'Noto Sans KR';
-  font-size: 20px;
-  text-align: left;
-  display: flex;
-}
-
-.joinsearchbox1 a{
-  color: #575757;
-}
-
-/* .joinsearchbar {
-  width: 813px;
-  height: 44px;
-  background-color: #333333;
+  width: 1280px;
   
-} */
+}
 
-.joinsearchdata input{
+.joinsearchregion input{
   color: #575757;
   font-family: 'Noto Sans KR';
   font-weight: 400;
@@ -180,13 +168,55 @@ height: 361px;
   margin-top: 95px;
   margin-left: 33px;
   border-bottom:1px solid #E3E3E3;
+  clear: both;
 }
 
-.joinsearchdata input[type="date"]::before {
+.joininv {
+  width: 192px;
+  height: 30px;
+  float: left;
+  clear: both;
+}
+
+.joinsearchbar input{
+  color: #575757;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;
+  background-color:transparent;
+  border:none;
+  line-height: 55px;
+  outline: none ;
+  width: 192px;
+  font-size: 20px;
+  position: relative;;
+  float: left;
+  clear: both;
+  border-bottom:1px solid #E3E3E3;
+  margin-top: 50px;
+}
+
+.joinsearchdata input{
+  color: #575757;
+  font-family: 'Noto Sans KR';
+  font-weight: 400;
+  background-color:transparent;
+  border:none;
+  line-height: 55px;
+  outline: none ;
+  width: 192px;
+  font-size: 20px;
+  position: relative;;
+  border-bottom:1px solid #E3E3E3;
+  float: left;
+  margin-left: 190px;
+  margin-top: 80px;
+}
+
+/* .joinsearchdata input[type="date"]::before {
   content:attr(data-placeholder);
   width:100%;
   color:#575757;
-}
+} */
 
 /* .joinsearchbox1::placeholder {
   color: #FEFEFE;
@@ -210,16 +240,15 @@ height: 361px;
   margin-left: 30px;
 }
 
-.joinsearchin {
-  width: 808px;
+.joinsearchin input{
+  width: 850px;
   height: 59px;
   background-color: transparent;
   border: 3px solid #668FA1;
   position: absolute;
-  margin-top: 180px;
-  margin-left: 216px;
   font-family: 'Noto Sans KR';
   font-size: 20px;
+  float: left;
   
 }
 
@@ -229,9 +258,11 @@ height: 361px;
   border:none;
   line-height: 54px;
   outline: none ;
-  width: 745px;
+  width: 850px;
   background-color: transparent;
-  margin-left: 16px;
+  margin-left: 188px;
+  border: 3px solid #C1D1D8;
+  padding-left: 16px;
 }
 
 .joinsearch1 input::placeholder{
@@ -285,4 +316,107 @@ height: 361px;
   text-align: right;
   margin-right: 33px;
   margin-top: 33px;
+}
+
+.joinheadercontainer {
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  background-color: #ffffff;
+  top: 0;
+  z-index: 20;
+}
+
+.joinheader {
+  width: 1280px;
+  margin: 0 auto;
+  height: 120px;
+  
+}
+
+.joinheaderlogo {
+  text-align:left;
+  font-weight: 700;
+  font-size: 50px;
+  font-family:'Hahmlet';
+  display: flex;
+  margin-top: 40px;
+}
+
+.joinheaderlogo a{
+  color:#668FA1;
+}
+
+.joinheaderlogo a:hover{
+  color:#668FA1;
+}
+
+
+.joinheadermenu1 {
+  font-family:'Hahmlet';
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 25px;
+  margin-left: 100px;
+  color:#668FA1;
+}
+
+.joinheadermenu2 {
+  font-family:'Hahmlet';
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 25px;
+  margin-left: 80px;
+}
+
+.joinheadermenu3 {
+  font-family: 'Hahmlet';
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-left: 600px;
+}
+
+.joinheadermenu4 {
+  font-family: 'Hahmlet';
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-left: 30px;
+}
+
+.joinheadermenu1 a {
+  color:#333333;
+}
+
+.joinheadermenu2 a {
+  color:#668FA1;
+}
+
+.joinheadermenu3 a{
+  color:#333333;
+}
+
+.joinheadermenu4 a{
+  color:#333333;
+}
+
+.joinheadermenu1 a:hover{
+  color: #668FA1;
+  transition : 0.5s;
+} 
+
+.joinheadermenu2 a:hover{
+  color: #668FA1;
+  transition : 0.5s;
+}
+
+.joinheadermenu3 a:hover{
+  color: #668FA1;
+  transition : 0.5s;
+}
+
+.joinheadermenu4 a:hover{
+  color: #668FA1;
+  transition : 0.5s;
 }
