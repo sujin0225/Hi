@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600;700&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+
+
+.UserInfo1{
+    margin-top: 115px;
+    margin-left: 88px;
+    color: #333333;
+    font-family: 'Hahmlet';
+    font-size: 30px;
+    font-weight: 400;
+    float: left;
+    text-align: left;
+    animation: Userslide1 2s;
+}
+
+.UserInfo2{
+    margin-top: 34px;
+    color: #333333;
+    font-family: 'Gowun Dodum';
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.UserInfo3{
+    margin-top: 10px;
+    color: #333333;
+    font-family: 'Noto Sans KR';
+    font-size: 23px;
+    font-weight: 300;
+    float: left;
+}
+
+.UserInfo4{
+    margin-top: 10px;
+    color: #333333;
+    font-family: 'Noto Sans KR';
+    font-size: 23px;
+    font-weight: 300;
+    margin-left: 15px;
+    float: left;
+    
+}
+
+.UserInfo5{
+    margin-top: 70px;
+    color: #333333;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    font-weight: 300;
+    text-align: left;
+    float: left;
+    clear: both;
+}
+
+.UserInfo6 input{
+    color: #333333;
+    font-family: 'Gowun Batang';
+    background-color:transparent;
+    border:none;
+    width: 352px;
+    font-size: 20px;
+    line-height: 35px;
+    outline: none;
+    position: absolute;
+    border-bottom:1px solid #EEEEEE;
+    margin-top: 20px;
+    position: relative;
+    
+  }
+
+.UserInfo7{
+    margin-top: 30px;
+    color: #333333;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    font-weight: 300;
+    text-align: left;
+}
+
+.UserInfo8{
+    margin-left: 37px;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 300;
+    float: right;
+}
+  
+  .UserInfo8 button{
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  border: 3px solid #DCDCDC;
+  color: #535353;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Noto Sans KR';
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  width: 196px;
+  height: 61px;
+  font-weight: 300;
+  }
+  
+  .UserInfo8 button:hover{
+  background-color: #DCDCDC;
+  color: #ffffff;
+  transition : 0.5s;
+  }
+  
+.UserInfo9{
+    margin-top: 123px;
+    width: 188px;
+    height: 55px;
+    background-color: #668FA1;
+    font-family: 'Noto Sans KR';
+    font-weight: 400;
+    font-size: 24px;
+    padding-top: 7px;
+    padding-left: 67px;
+    color: #ffffff;
+    cursor: pointer;
+    margin-bottom: 304px;
+}
+
+@keyframes Userslide1 {
+    from{
+      margin-top: -115px;
+      opacity: 0;
+    }
+    to{
+      margin-top: 115px;
+      opacity: 1;
+    }
+  }

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;600;700&display=swap');
+
+
+.MuiPaper-root{
+    display: flex;
+    line-height: 50px;
+    background: none;
+    margin-top: 20px;
+   
+}
+
+.react-datepicker {
+    height: 450px;
+    border-radius: 50px;
+    font-family: 'Noto Sans KR';
+    font-size: 18px;
+    font-weight: 400;
+    width: 600px;
+    border: transparent;
+  }
+  
+  .react-datepicker__input-container > input {
+   
+    
+    
+    border: transparent;
+    border-radius: 35px;
+    background-color: transparent;
+  }
+  .react-datepicker__input-container > input:focus {
+    outline: white;
+  }
+  
+  .react-datepicker__header {
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: transparent;
+    border: transparent;
+  }
+  
+  .react-datepicker__close-icon::after {
+    
+    right: 870px;
+    
+    width: 10px;
+    height: 10px;
+    background-color: #a3a2a2;
+  }
+

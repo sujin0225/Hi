@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600;700&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+
+.paymentcontainer{
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.paymenttitle{
+    margin-top: 125px;
+    font-family: 'Hahmlet';
+    font-size: 40px;
+    font-weight: 500;
+    color: #333333;
+    text-align: left;
+}
+
+.paymentbox{
+    margin-top: 50px;
+    margin-bottom: 115px;
+    width: 100%;
+    height: 196px;
+    background-color: #F8F8F8;
+}
+
+.paymentboxtext1{
+    clear: both;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 55px;
+}
+
+.paymentboxtext2{
+    margin-left: 110px;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 55px;
+    margin-right: 207px;
+}
+
+.paymentboxtext3{
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 15px;
+    font-weight: 400;
+    clear: both;
+}
+
+.paymentboxtext4{
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 15px;
+    font-weight: 400;
+    margin-left: 126px;
+}
+
+.paymentboxtext5{
+    margin-left: 20px;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 55px;
+    margin-right: 207px;
+}
+
+.paymentlinebox1{
+  width: 100%;
+  height: 326px;
+  border: 3px solid;
+  border-color: #93B0BD;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.paymentlinebox2{
+    width: 540px;
+    height: 194px;
+    margin-top: 63px;
+    background-color: #e5e5e5;
+    margin-left: 97px;
+    float: left;
+    border-right:2px solid #D1DDE3;
+}
+
+.paymentlinebox3{
+    width: 540px;
+    height: 194px;
+    margin-top: 63px;
+    background-color: #ffffff;
+    margin-right: 97px;
+    float: right;
+}
+
+.paymentlinetext1{
+    float: left;
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    font-weight: 400;
+}

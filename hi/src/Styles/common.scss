@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+* {
+  box-sizing: border-box;
+  button,
+  select {
+    outline: none;
+  }
+}
+
+#root {
+  font-family: 'Noto Sans KR', 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana',
+    sans-serif;
+}
+
+%flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$main-purple: #5f0080;
+$main-gray: #4c4c4c;
+$dark-gray: #333333;
+$medium-gray: #666666;
+$light-gray: #999999;
+$point-orange: #fa622f;
+$gray-background: #f7f7f7;

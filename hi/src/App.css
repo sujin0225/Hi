@@ -1,0 +1,555 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;600;700&display=swap');
+
+.App {
+  text-align: center;
+  zoom: 67%;
+  padding-top: 120px;
+}
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.headercontainer {
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  background-color: #ffffff;
+  top: 0;
+  z-index: 20;
+}
+
+.header {
+  width: 1280px;
+  margin: 0 auto;
+  height: 120px;
+  
+}
+
+.headerlogo {
+  text-align:left;
+  font-weight: 700;
+  font-size: 50px;
+  font-family:'Hahmlet';
+  display: flex;
+  margin-top: 40px;
+}
+
+.headerlogo a{
+  color:#668FA1;
+}
+
+.headerlogo a:hover{
+  color:#668FA1;
+}
+
+
+.headermenu1 {
+  font-family:'Hahmlet';
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 25px;
+  margin-left: 100px;
+}
+
+.headermenu2 {
+  font-family:'Hahmlet';
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 25px;
+  margin-left: 80px;
+}
+
+.headermenu3 {
+  font-family: 'Hahmlet';
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-left: 600px;
+  cursor: pointer;
+}
+
+.headermenu4 {
+  font-family: 'Hahmlet';
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-left: 30px;
+}
+
+.headermenu1 a {
+  color:#333333;
+}
+
+.headermenu2 a {
+  color:#333333;
+}
+
+.headermenu3 a{
+  color:#333333;
+}
+
+.headermenu4 a{
+  color:#333333;
+}
+
+.headermenu1 a:hover{
+  color: #668FA1;
+  transition : 0.5s;
+} 
+
+.headermenu2 a:hover{
+  color: #668FA1;
+  transition : 0.5s;
+}
+
+.headermenu3 a:hover{
+  color: #668FA1;
+  transition : 0.5s;
+}
+
+.headermenu4 a:hover{
+  color: #668FA1;
+  transition : 0.5s;
+}
+
+a {
+  text-decoration: none;
+  color:#333333;
+}
+
+a:hover{
+  color:#333333;
+}
+
+.main {
+  background-image: url('./img/메인1.png');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin-top: 40px;
+  height: 700px;
+  display: flex;
+  animation: slidemain2 2s;
+}
+
+.main1{
+    width: 1280px;
+    margin:0px auto;
+    display: flex;
+    
+}
+
+.main2 {
+  color: #FEFEFE;
+  font-family: 'Gowun Batang';
+  font-size: 50px;
+  position: absolute;
+  margin-top: 220px;
+  margin-bottom: 220px;
+  text-align: left;
+}
+
+.maindata1 input{
+  color: #FEFEFE;
+  font-family: 'Gowun Batang';
+  background-color:transparent;
+  margin-top: 340px;
+  margin-left: 20px;
+  position: relative;
+  border:none;
+  line-height: 35px;
+  outline: none ;
+  width: 192px;
+  font-size: 30px;
+  cursor: pointer;
+  
+}
+
+.maindata2 input{
+  color: #FEFEFE;
+  font-family: 'Gowun Batang';
+  background-color:transparent;
+  margin-top: 340px;
+  margin-left: 20px;
+  position: relative;
+  border:none;
+  line-height: 35px;
+  outline: none ;
+  width: 199px;
+  font-size: 30px;
+  border-right:1px solid #BBC3C5;
+  cursor: pointer;
+}
+
+.mainsearch1 input{
+  font-family: 'Gowun Batang';
+  background-color:transparent;
+  position: relative;
+  border:none;
+  line-height: 35px;
+  outline: none ;
+  width: 240px;
+  font-size: 30px;
+  color: #FEFEFE;
+  float: left;
+  clear: both;
+  margin-top: 15px;
+}
+
+.mainsearch1 input::placeholder{
+  font-family: 'Gowun Batang';
+  color: #FEFEFE;
+}
+
+.mainsearch2 {
+  color: #FEFEFE;
+  font-family: 'Gowun Batang';
+  font-size: 30px;
+  margin-left: 10px;
+  float: left;
+}
+
+.mainsearch3 {
+  color: #FEFEFE;
+  font-family: 'Gowun Batang';
+  font-size: 30px;
+  margin-top: 338px;
+  margin-left:5px;
+}
+
+.mainsearch4 button{
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  margin: 50px 20px;
+  margin-top: 340px;
+  border: 1px solid #FEFEFE;
+  color: #FEFEFE;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Gowun Batang';
+  font-size: 18px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.mainsearch4 button:hover{
+  background-color: #fff;
+  color: black;
+  transition : 0.5s;
+}
+
+/* input[type="date"]::-webkit-calendar-picker-indicator{
+  opacity:0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+input[type="date"]::before {
+  content:attr(data-placeholder);
+  width:100%;
+  color:#FEFEFE;
+}
+
+input[type="date"]:focus:before,
+input[type="date"]:valid:before{
+  display: none;
+} */
+
+
+
+.content1 {
+  margin-top:130px;
+  font-family: 'Hahmlet';
+  font-weight: 600;
+  font-size: 40px;
+  display: flex;
+  color:#333333;
+  overflow: hidden;
+  
+}
+
+.content2 {
+  margin-top:0px;
+  font-family: 'Hahmlet';
+  text-align:right;
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-left: 932px;
+}
+
+.content3 {
+  font-family: 'Hahmlet';
+  text-align:right;
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 14px;
+  margin-left: 15px;
+}
+
+.content4 {
+  font-family: 'Hahmlet';
+  text-align:right;
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-left: 978px;
+}
+
+.content4 a{
+  color:#333333;
+}
+
+.content2 a{
+  color:#333333;
+}
+
+.content4 a:hover{
+  color:#333333;
+}
+
+.content2 a:hover{
+  color:#333333;
+}
+
+
+.box1{
+  width: 624px;
+  height: 338px;
+  border: 3px solid;
+  border-color: #93B0BD;
+  margin-top: 20px;
+  float: right;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+  .box1 a:hover{
+    background-color: #C7D8DD;
+    color: #ffffff;
+    transition : 0.5s;
+    }
+  
+    .box1:hover{
+      background-color: #C7D8DD;
+      transition : 0.5s;
+      }  
+  
+    .box1 a{
+      color:#333333;
+    }  
+
+.box2{
+  width: 624px;
+  height: 338px;
+  border: 3px solid;
+  border-color: #93B0BD;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+  .box2 a:hover{
+    background-color: #C7D8DD;
+    color: #ffffff;
+    transition : 0.5s;
+    }
+  
+    .box2:hover{
+      background-color: #C7D8DD;
+      transition : 0.5s;
+      }  
+  
+    .box2 a{
+      color:#333333;
+    } 
+
+
+.boxtitle{
+  font-family: 'Hahmlet';
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 50px;
+  text-align: left;
+  margin-left: 50px;
+}
+
+.boxcontent1{
+  font-family: 'Noto Sans KR';
+  font-weight: 300;
+  font-size: 25px;
+  margin-top: 30px;
+  text-align: left;
+  margin-left: 50px;
+}
+
+.boxcontent2{
+  font-family: 'Noto Sans KR';
+  font-weight: 300;
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 50px;
+}
+
+.interval{
+  height: 304px;
+}
+
+.footerbg{
+  background-color: #493F38;
+  height:509px;
+  width: 100%;
+  float: left; 
+  
+}
+
+.footer{
+  width: 1280px;
+  margin:0px auto;
+}
+
+.footer1{
+  font-family:'Hahmlet';
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 92px;
+  text-align:left;
+  
+}
+
+.footer1 a{
+  color:#FEFEFE;
+}
+
+.footer1 a:hover{
+  color:#FEFEFE;
+}
+
+.footer2{
+  font-family:'Noto Sans KR';
+  font-weight: 300;
+  font-size: 24px;
+  margin-top: 38px;
+  text-align:left;
+  color:#C5C5C5;
+}
+
+.footer3{
+  font-family:'Noto Sans KR';
+  font-weight: 300;
+  font-size: 24px;
+  margin-top: 10px;
+  text-align:left;
+  color:#C5C5C5;
+  display: flex;
+}
+
+.footer4{
+  font-family:'Noto Sans KR';
+  font-weight: 300;
+  font-size: 24px;
+  text-align:left;
+  margin-left: 20px;
+  color:#C5C5C5;
+  margin-right: 20px;
+}
+
+.footer5{
+  border-left:1px solid #858585;
+  margin-left: 20px;
+}
+
+.footerline{
+  background-color:#F1F1F1;
+  width:1279px;
+  height:1px;
+  margin-top: 64px;
+  margin-bottom: 65px;
+  float: left;
+}
+
+.footer6{
+  font-family: "Hahmlet";
+  font-weight: 300;
+  font-size: 24px;
+  text-align:left;
+  color:#C5C5C5;
+}
+
+.start {
+  opacity : 0;
+}
+.end {
+  opacity : 1;
+  transition : opacity 0.5s;
+}
+
+.texticon{
+  text-align: right;
+  margin-right: 33px;
+  margin-top: 33px;
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.swiper .swiper-pagination-progressbar {
+  background: #EEEEEE;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: #668FA1 !important;;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+@keyframes slidemain2 {
+  from{
+    margin-left: -0px;
+    opacity: 0;
+  }
+  to{
+    margin-left: 0px;
+    opacity: 1;
+  }
+}
