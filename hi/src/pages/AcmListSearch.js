@@ -148,17 +148,21 @@ if (is_login && is_token) {
             <Link to="/Join">커뮤니티</Link>
             </div>
             <div className='acmlistheadermenu3'>
-            {username}님
             <Text1
                   color="black"
                   onClick={() => {
                     dispatch(actionCreators.logoutDB());
                   }}
                 >
-                   로그아웃 
+                  로그아웃 
                 </Text1>
-            </div>
-            <div className='acmlistheadermenu4'>
+                <Text1
+                onClick={() => {
+                  navigate("/changeUserInfo");
+                }}
+                color="purple"
+              >{username}님
+              </Text1>
             </div>
             </div>
             </div>

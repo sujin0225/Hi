@@ -4,13 +4,16 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { setCookie, getCookie, deleteCookie } from "../../shared/Cookie";
 import { useNavigate } from "react-router-dom";
-
+import { useParams } from 'react-router-dom'
+import Swal from "sweetalert2";
 
 
 // 액션
 const LOG_IN = "LOG_IN";
 const LOG_OUT = "LOG_OUT";
 const GET_USER = "GET_USER";
+const VALIDATE_EMAIL = "VALIDATE_EMAIL";
+const DELETE_USER = 'DELETE_USER';
 // const LOAD_TOKEN = "LOAD_TOKEN";
 
 // 초기값
@@ -26,33 +29,52 @@ const initialState = {
 const logIn = createAction(LOG_IN, (user) => ({ user }));
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
 const getUser = createAction(GET_USER, (user) => ({ user }));
+const validateEmail = createAction(VALIDATE_EMAIL, (user) => ({ user }));
+const deleteUser = createAction(DELETE_USER, () => ({}));
 
 
-
-// const usernameCheckF = (username) => {
-//   return function (dispatch, getState) {
-//     console.log(username);
-//     axios({
-//       method: "post",
-//       url: "/join",
-//       data: {
-//         username: username,
-//       },
-//     })
-//       .then((res) => {
-//         console.log(res.data);
-//         if (!res.data) {
-//           window.alert("사용 가능한 아이디입니다");
-//         } else {
-//           window.alert("이미 사용 중인 아이디입니다");
-//         }
-//       })
-//       .catch((err) => {
-//         console.log("아이디 중복", err);
-//         window.alert("아이디 중복확인에 문제가 생겼습니다");
-//       });
-//   };
-// };
+const usernameCheckF = (username) => {
+  return function (dispatch, getState) {
+    console.log(username);
+    axios({
+      method: "get",
+      url: `/user/username/${username}`,
+      data: {
+        username: username
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data) {
+          // window.alert("사용 가능한 아이디입니다");
+          Swal.fire({
+            icon: 'success',
+            title: "사용 가능한 아이디입니다",
+            confirmButtonColor: "#668FA1",
+            confirmButtonText: "확인",
+          });
+        } else {
+          // window.alert("이미 사용 중인 아이디입니다");
+          Swal.fire({
+            icon: 'warning',
+            title: "이미 사용 중인 아이디입니다",
+            confirmButtonColor: "#668FA1",
+            confirmButtonText: "확인",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("아이디 중복", err);
+        // window.alert("아이디 중복확인에 문제가 생겼습니다");
+        Swal.fire({
+          icon: 'error',
+          title: "아이디 중복확인에 문제가 생겼습니다",
+          confirmButtonColor: "#668FA1",
+          confirmButtonText: "확인",
+        });
+      });
+  };
+};
 
 // const emailCheckF = (email) => {
 //   return function (dispatch, getState) {
@@ -78,32 +100,79 @@ const getUser = createAction(GET_USER, (user) => ({ user }));
 //   };
 // };
 
-// const nicknameCheckF = (nickname) => {
-//   return function (dispatch, getState) {
-//     console.log(nickname);
-//     axios({
-//       method: "post",
-//       url: "/join",
-//       data: {
-//         nickname: nickname,
-//       },
-//     })
-//       .then((res) => {
-//         if (!res.data) {
-//           window.alert("사용 가능한 닉네임입니다");
-//         } else {
-//           window.alert("이미 사용 중인 닉네임입니다");
-//         }
-//       })
-//       .catch((err) => {
-//         console.log("닉네임 중복", err);
-//         window.alert("닉네임 중복확인에 문제가 생겼습니다");
-//       });
-//   };
-// };
+const EmailValidationAPI = (email, authnumber) => {
+  return function (dispatch, getState, { history }) {
+    axios({
+      method: "POST",
+      url: `/user/email/check`,
+      data: {
+        email: email,
+        checkNum: Number(authnumber),
+      },
+    })
+      .then((res) => {
+        if (res.data.msg === "success") {
+          dispatch(validateEmail(true));
+        } else {
+          Swal.fire({
+            icon: 'warning',
+            title: "인증번호가 일치하지 않습니다.",
+            confirmButtonColor: "#d6d6d6",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("EmailValidationAPI에서 오류 발생", err);
+      });
+  };
+};
+
+const nicknameCheckF = (nickname) => {
+  return function (dispatch, getState) {
+    console.log(nickname);
+    axios({
+      method: "get",
+      url: `/user/nickname/${nickname}`,
+      data: {
+        nickname: nickname
+      },
+    })
+      .then((res) => {
+        // console.log(res.data==="true")
+        if (res.data) {
+          // window.alert("사용 가능한 닉네임입니다");
+          Swal.fire({
+            icon: 'success',
+            title: "사용 가능한 닉네임입니다",
+            confirmButtonColor: "#668FA1",
+            confirmButtonText: "확인",
+          });
+        } else {
+          // window.alert("이미 사용 중인 닉네임입니다");
+          Swal.fire({
+            icon: 'warning',
+            title: "이미 사용 중인 닉네임입니다",
+            confirmButtonColor: "#668FA1",
+            confirmButtonText: "확인",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("닉네임 중복", err);
+        // window.alert("닉네임 중복확인에 문제가 생겼습니다");
+        Swal.fire({
+          icon: 'error',
+          title: "닉네임 중복확인에 문제가 생겼습니다",
+          confirmButtonColor: "#668FA1",
+          confirmButtonText: "확인",
+        });
+      });
+      
+  };
+};
 
 const signupDB = (username, password, nickname, email, phoneNumber, postcode, address, detailedAddress,
-  lastNameKor, firstNameKor, lastNameEng, firstNameEng, gender) => {
+  lastNameKor, firstNameKor, lastNameEng, firstNameEng, gender, birthDate) => {
   return async function (dispatch, getState, { history }) {
     console.log(
       "id : " + username,
@@ -118,10 +187,11 @@ const signupDB = (username, password, nickname, email, phoneNumber, postcode, ad
       "firstNameKor : " + firstNameKor,
       "lastNameEng : " + lastNameEng,
       "firstNameEng : " + firstNameEng,
-      "gender : " + gender
+      "gender : " + gender,
+      "birthDate : " + birthDate
     );
     try {
-      const signup = await axios.post("/join", {
+      const signup = await axios.post("/user/join", {
         username: username,
         password: password,
         //passwordCheck: passwordCheck,
@@ -135,27 +205,141 @@ const signupDB = (username, password, nickname, email, phoneNumber, postcode, ad
         firstNameKor: firstNameKor,
         lastNameEng: lastNameEng,
         firstNameEng: firstNameEng,
-        gender: gender
+        gender: gender,
+        birthDate: birthDate
         //회원가입 시 서버로 해당 값들 보냄
       });
       console.log(signup);
 
-      if (signup.data.result === true) {
-        window.alert("성공적으로 회원가입하셨습니다");
-        window.location.replace("/login");
-        //회원가입 완료 시 login 페이지로 이동
-      } else if (signup.data.result === false) {
-        window.alert(signup.data.errorMessage);
-        window.location.replace("/signup");
+      // if (signup.data.result === true) {
+      //   window.alert("성공적으로 회원가입하셨습니다");
+      //   window.location.replace("/login");
+      //   //회원가입 완료 시 login 페이지로 이동
+      // } else if (signup.data.result === false) {
+      //   window.alert(signup.data.errorMessage);
+      //   window.location.replace("/signup");
 
-        //회원가입 실패 시 다시 signup 페이지로 이동
-      }
+      //   //회원가입 실패 시 다시 signup 페이지로 이동
+      // }
+      // window.alert("성공적으로 회원가입 하셨습니다");
+      Swal.fire({
+        icon: 'success',
+        title: "성공적으로 회원가입 하셨습니다",
+        confirmButtonColor: "#668FA1",
+        confirmButtonText: "확인",
+      }).then(function(){
+        
+        window.location.replace("/login");
+      })
+      
     } catch (err) {
       alert("회원가입에 실패했습니다.");
       console.log(err);
     }
   };
 };
+
+const updateDB = (password, nickname, email, phoneNumber, postcode, address, detailedAddress) => {
+  return async function (dispatch, getState, { history }) {
+    console.log(
+      "pwd : " + password,
+      "nickname : " + nickname,
+      "email : " + email,
+      "phoneNumber : " + phoneNumber,
+      "postcode : " + postcode,
+      "address : " + address,
+      "detailedAddress : " + detailedAddress,
+    );
+    try {
+      const signup = await axios.put("/user/update", {
+        password: password,
+        //passwordCheck: passwordCheck,
+        nickname: nickname,
+        email: email,
+        phoneNumber: phoneNumber,
+        postcode: postcode,
+        address: address,
+        detailedAddress: detailedAddress,
+        //수정 시 서버로 해당 값들 보냄
+      });
+      console.log(signup);
+
+      // if (signup.data.result === true) {
+      //   window.alert("성공적으로 회원가입하셨습니다");
+      //   window.location.replace("/login");
+      //   //회원가입 완료 시 login 페이지로 이동
+      // } else if (signup.data.result === false) {
+      //   window.alert(signup.data.errorMessage);
+      //   window.location.replace("/signup");
+
+      //   //회원가입 실패 시 다시 signup 페이지로 이동
+      // }
+      // window.alert("성공적으로 회원가입 하셨습니다");
+      Swal.fire({
+        icon: 'success',
+        title: "성공적으로 회원정보를 </br>수정 하셨습니다",
+        confirmButtonColor: "#668FA1",
+        confirmButtonText: "확인",
+      }).then(function(){
+        
+        window.location.replace("/");
+      })
+      
+    } catch (err) {
+      alert("회원가입 수정에 실패했습니다.");
+      console.log(err);
+    }
+  };
+};
+
+// 회원탈퇴 액션
+// const withdrawalAC = (username, password) => {
+//   return function (dispatch, getState, {history}) {
+//     axios
+//       .delete("/user/delete", {
+//         username: username,
+//         password: password,
+//       })
+//       .then(response => {
+//         // window.alert(response.data);
+//         // navigator('/')
+//         Swal.fire({
+//           icon: 'success',
+//           title: "회원 탈퇴가 완료되었습니다.",
+//           confirmButtonColor: "#668FA1",
+//           confirmButtonText: "확인",
+//         }).then(function(){
+//         window.location.replace("/");
+//         })
+//       })
+//       .catch(error => {
+//         Swal.fire({
+//           icon: 'warning',
+//           title: "회원 탈퇴에 실패했습니다.",
+//           confirmButtonColor: "#668FA1",
+//           confirmButtonText: "확인",
+//         });
+//         console.log("탈퇴 Error", error)
+//       })
+//   }
+// }
+
+const deleteUserDB = (username) => {
+  return function (dispatch, getState, { history }) {
+    axios({
+      method: 'delete',
+      url: `/user/delete`,
+    }).then((res) => {
+      dispatch(deleteUser({
+        username: username
+      }));
+      window.alert('회원탈퇴가 완료되었습니다');
+      // replace를 사용한 이유: 뒤로가기 했을때 회원 정보 수정창이 나오면 비로그인 시 접근 차단은 했지만 사용자 경험이 별로이므로
+      navigator('/')
+    });
+  };
+};
+
 
 // 로그인 미들웨어
 const loginDB = (username, password) => {
@@ -188,13 +372,27 @@ const loginDB = (username, password) => {
             firstNameKor: DecodedToken.USER_NAME,
           })
         );
-
+        Swal.fire({
+          icon: 'success',
+          title: `${username}님 환영합니다.`,
+          confirmButtonColor: "#668FA1",
+          confirmButtonText: "확인",
+        }).then(function(){
+          
         window.location.replace("/");
+        })
         // window.alert(`${DecodedToken.USER_NAME}님 환영합니다.`);
-        window.alert(`${username}님 환영합니다.`);
+        // window.alert(`${username}님 환영합니다.`);
+        
       })
       .catch((error) => {
-        window.alert("아이디와 비밀번호를 다시한번 확인해주세요.");
+        // window.alert("아이디와 비밀번호를 다시한번 확인해주세요.");
+        Swal.fire({
+          icon: 'warning',
+          title: "아이디와 비밀번호를 <br/>다시한번 확인해주세요.",
+          confirmButtonColor: "#668FA1",
+          confirmButtonText: "확인",
+        });
         console.log("Login Error", error);
       });
   };
@@ -210,6 +408,7 @@ const logoutDB = () => {
     window.location.replace("/");
   };
 };
+
 
 
 // 리듀서
@@ -229,6 +428,17 @@ export default handleActions(
         draft.user = null;
         draft.is_login = false;
       }),
+      [VALIDATE_EMAIL]: (state, action) =>
+      produce(state, (draft) => {
+        draft.is_email_validate = action.payload.user;
+      }),
+      [DELETE_USER]: (state, action) =>
+            produce(state, (draft) => {
+                // 회원 탈퇴 시 쿠키에 담긴 토큰 삭제, 회원정보 비워줌, 로그인 여부 false
+                deleteCookie('is_login');
+                draft.user = null;
+                draft.is_Login = false;
+            }),
     [GET_USER]: (state, action) => produce(state, (draft) => {}),
   },
   initialState
@@ -241,6 +451,12 @@ const actionCreators = {
   signupDB,
   loginDB,
   logoutDB,
+  usernameCheckF,
+  nicknameCheckF,
+  EmailValidationAPI,
+  updateDB,
+  deleteUserDB,
+  deleteUser
 };
 
 

@@ -45,6 +45,7 @@
     "react-loading": "^2.0.3",
     "react-query": "^3.39.1",
     "react-redux": "^8.0.4",
+    "react-responsive": "^9.0.0",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
@@ -52,6 +53,7 @@
     "redux-logger": "^3.0.6",
     "start": "^5.1.0",
     "styled-components": "^5.3.5",
+    "sweetalert2": "^11.6.5",
     "swiper": "^8.2.2",
     "web-vitals": "^2.1.4"
   },

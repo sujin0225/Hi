@@ -32,7 +32,7 @@ const P = styled.p`
   // font-weight: ${(props) => (props.bold ? "600" : "400")};
   // margin: ${(props) => props.margin};;
   float:right;
-  margin-left:25px;
+  margin-left:15px;
 `
 
 export default Text;

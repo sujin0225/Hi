@@ -17,7 +17,7 @@
     font-weight: 400;
     color: #668FA1;
     text-align: left;
-    animation: pageslide1 2s;
+    /* animation: pageslide1 2s; */
 }
 
 .mypagebox{
@@ -26,7 +26,7 @@
     height: 829px;
     background-color: #F8F8F8;
     float: left;
-    animation: pageslide2 2s;
+    /* animation: pageslide2 2s; */
 }
 
 .mypagebox1{
@@ -37,7 +37,7 @@
     margin-left: 70px; 
     border: 3px solid;
     border-color: #93B0BD;
-    animation: pageslide2 2s;
+    /* animation: pageslide2 2s; */
 }
 
 .mypageboxtext{
@@ -112,11 +112,15 @@
     color:#333333;
 }
 
+.mypageboxtext5 a{
+    color:#333333;
+}
+
 .mypagetit a{
     color:#668FA1;
 }
 
-@keyframes pageslide1 {
+/* @keyframes pageslide1 {
     from{
       margin-top: -166px;
       opacity: 0;
@@ -137,4 +141,4 @@
       opacity: 1;
     }
   }
-  
+   */

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600;700&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+
+.withdraw1text1{
+    margin-top: 115px;
+    margin-left: 88px;
+    color: #333333;
+    font-family: 'Hahmlet';
+    font-size: 30px;
+    font-weight: 400;
+    float: left;
+    text-align: left;
+}
+
+.withdraw1text2{
+    margin-top: 15px;
+    color: #333333;
+    font-family: 'Noto Sans KR';
+    font-size: 23px;
+    font-weight: 300;
+}
+
+.withdraw1text3{
+    margin-top: 56px;
+    color: #333333;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.withdraw1text4{
+    margin-top: 30px;
+    color:#535353;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    float: left;
+    clear:both;
+    font-weight: 300;
+  }
+
+.withdraw1text5{
+    margin-top: 96px;
+    color:#535353;
+    font-family: 'Gowun Dodum';
+    font-size: 25px;
+    float: left;
+    clear:both;
+    font-weight: 300;
+    margin-left: 340px;
+    margin-bottom: 500px;
+  }  
+
+.withdraw1box1 {
+    width: 810px;
+    height: 240px;
+    border: 3px solid;
+    border-color: #93B0BD;
+    margin-top: 56px;
+    clear: right;
+    float: left;
+    background-color: transparent;
+    color:#333333;
+    margin-right: 25px;
+  }
+
+.withdraw1text6 {
+    margin-top: 48px;
+    color: #333333;
+    font-family: 'Noto Sans KR';
+    font-size: 23px;
+    font-weight: 300;
+    margin-left: 50px;
+  }  
+
+.withdraw1text7 {
+    margin-top: 18px;
+    color: #333333;
+    font-family: 'Noto Sans KR';
+    font-size: 23px;
+    font-weight: 300;
+    margin-left: 50px;
+  }    

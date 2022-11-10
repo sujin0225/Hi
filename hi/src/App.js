@@ -19,6 +19,8 @@ import Login from './pages/Login';
 import ChangeUserInfo from './pages/ChangeUserInfo';
 import JoinBoardWrite from './pages/JoinBoardWrite';
 import JoinSearch from './pages/JoinSearch';
+import Withdraw from './pages/Withdraw'
+import Withdraw_1 from './pages/Withdraw_1'
 import bg1 from './img/그림1.png'
 import bg2 from './img/그림4.png'
 import travel1 from './img/여행지1.png'
@@ -142,8 +144,6 @@ const [data, setData] = useState([]);
             <Link to="/Join">커뮤니티</Link>
             </div>
             <div className='headermenu3'>
-            {/* <Link to="/Login">LOGIN</Link> */}
-                  {username}님 
                 <Text1
                   color="black"
                   onClick={() => {
@@ -152,8 +152,15 @@ const [data, setData] = useState([]);
                 >
                   로그아웃 
                 </Text1>
+                <Text1
+                onClick={() => {
+                  navigate("/changeUserInfo");
+                }}
+                color="purple"
+              >
+                {username}님
+              </Text1>
             </div>
-            
             </div>
             </div>
             </div>
@@ -303,6 +310,8 @@ const [data, setData] = useState([]);
         <Route path="/search" element={<AcmListSearch/>} />
         <Route path="/searchjoin" element={<JoinSearch/>} />
         <Route path="/Signup" element={<Signup/>} />
+        <Route path="/Withdraw" element={<Withdraw/>} />
+        <Route path="/Withdraw_1" element={<Withdraw_1/>} />
       </Routes>
     </div>
     );
@@ -494,6 +503,8 @@ const [data, setData] = useState([]);
         <Route path="/search" element={<AcmListSearch/>} />
         <Route path="/searchjoin" element={<JoinSearch/>} />
         <Route path="/Signup" element={<Signup/>} />
+        <Route path="/Withdraw" element={<Withdraw/>} />
+        <Route path="/Withdraw_1" element={<Withdraw_1/>} />
       </Routes>
     </div>
   );

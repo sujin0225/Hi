@@ -81,3 +81,8 @@ export const genderCheck = (gender) => {
   return _reg.test(gender);
 }
 
+//생년월일 형식
+export const birthDateCheck = (birthDate) => {
+  let _reg =  /^[0-9]{8,8}$/;
+  return _reg.test(birthDate);
+}
