@@ -19,11 +19,13 @@ function Withdraw_1({ user }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     // const { username, password } = props;
-    const username = user?.username;
+    const username = getCookie("username");
+    console.log(username);
     // const password = user?.password;
 
-    const withdrawal = () => {
+    const deleteBtn = () => {
       dispatch(userActions.deleteUserDB(username));
+      console.log(userActions.deleteUserDB(username));
     }
 
     if (is_login && is_token) {
@@ -86,7 +88,7 @@ return(
                 text="탈퇴하기"
                 color = "#535353"
                 borderColor="3px solid #DCDCDC"
-                _onClick={withdrawal}
+                _onClick={deleteBtn}
                 />  
         </div>        
         </div>

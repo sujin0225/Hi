@@ -199,7 +199,7 @@ if (is_login && is_token) {
             <img src = {content.imageUrls[0]} width='450' height='370'/>
             <div className='lodgingtitle'>{content.nameKor}</div>
             <div className='lodgingcontent'>{content.region}</div>
-            <div className='lodgingcontent1'>{content.priceKor}원~</div>
+            <div className='lodgingcontent1'>{content.priceKor.toLocaleString()}원~</div>
             <div className='lodgingcontent2'>{content.rating}/5.0</div>
            </Link>
            </div>
@@ -346,7 +346,7 @@ return (
         <img src = {content.imageUrls[0]} width='450' height='370'/>
         <div className='lodgingtitle'>{content.nameKor}</div>
         <div className='lodgingcontent'>{content.region}</div>
-        <div className='lodgingcontent1'>{content.priceKor}원~</div>
+        <div className='lodgingcontent1'>{content.priceKor.toLocaleString()}원~</div>
         <div className='lodgingcontent2'>{content.rating}/5.0</div>
        </Link>
        </div>

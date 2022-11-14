@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import drop from '../img/그림9.png'
 import check from '../img/그림8.png'
 import { useLocation } from 'react-router-dom';
+import axios from "axios";
+import { useParams } from 'react-router-dom'
 
 function Reser(){
   const [입력값, 입력값변경] = useState("");
@@ -14,8 +16,24 @@ function Reser(){
   const [count, setCount] = useState(0);
   const [peoplecount, setPeopleCount] = useState(0);
   const { pathname } = useLocation();
+  const [roomdata, setRoomData] = useState([]);
+  const [data, setData] = useState([]);
+  const { id } = useParams();
 
+  // useEffect(() => {
+  //   axios.get(`/accommodation/${id}`)
+  //   .then((res) => {
+  //     setRoomData(res.data.rooms)
+  //     console.log(res)})
+  // },[]);
+  
 
+  useEffect(() => {
+    axios.get(`/accommodation/${id}`)
+    .then(res => {setData(res.data)
+    console.log(res)})
+  },[]);
+  console.log(roomdata?.name)
 
   const handleQuantity = (type) => {
     if (type === "plus") {
@@ -68,7 +86,7 @@ return(
       <div className="reserboxtext">숙소</div>
       <div className="reserboxtext1">객실</div>
       <div className="reserboxtext1">날짜</div>
-      <div className="reserboxtext2">하이파리 민박</div>
+      <div className="reserboxtext2">{roomdata?.name}</div>
       <div className="reserboxtext3">2인실</div>
       <div className="reserboxtext3">2022.05.15 일 - 2022.05.16 월</div>
       </div>

@@ -38,8 +38,7 @@ function Acm(){
     const [products, setProduct] = useState({});
     const [content, setContent] = useState({});
     const location = useLocation();
-    console.log(location);
-
+    
     function onScroll(){
       setPosition(window.scrollY)
     }
@@ -63,12 +62,14 @@ function Acm(){
 
 useEffect(() => {
   axios.get(`/accommodation/${id}`)
-  .then(res => setData(res.data))
+  .then(res => {setData(res.data)
+  })
 },[]);
 
 useEffect(() => {
   axios.get(`/accommodation/${id}`)
-  .then(res => setRoomData(res.data.rooms))
+  .then(res => {setRoomData(res.data.rooms)
+    console.log(res.data.rooms)})
 },[]);
 
 const is_login = getCookie("is_login");
@@ -194,14 +195,14 @@ return(
         {roomdata.map((item,i) => {
         return (
           <div className='Acm'>
-          <Link to={`/Room/${item.id}`}>
+          <Link to={`/reser/${item.id}`}>
           <div className='text0'><img src = {item.imageUrl } width='529' height='353'/></div>
           <div className='textbox'>
             
           <div className='text1'>{item.name}</div>
           <div className='text3'>{item.type}</div>
           <div className='text4'>{item.numberPeople}명</div>
-          <div className='text7'>{item.price}원</div>
+          <div className='text7'>{item.price.toLocaleString()}원</div>
           </div>
           </Link>
          </div>
@@ -410,14 +411,14 @@ return(
       {roomdata.map((item,i) => {
       return (
         <div className='Acm'>
-        <Link to={`/Room/${item.id}`}>
+        <Link to={`/reser/${item.id}`}>
         <div className='text0'><img src = {item.imageUrl } width='529' height='353'/></div>
         <div className='textbox'>
           
         <div className='text1'>{item.name}</div>
         <div className='text3'>{item.type}</div>
         <div className='text4'>{item.numberPeople}명</div>
-        <div className='text7'>{item.price}원</div>
+        <div className='text7'>{item.price.toLocaleString()}원</div>
         </div>
         </Link>
        </div>

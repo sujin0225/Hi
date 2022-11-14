@@ -2,7 +2,7 @@ import "./ChangeUserInfo.css";
 import { Routes, Route, Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react';
 import Text1 from "../pages/elements/Text1";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { actionCreators } from "../pages/redux/modules/user";
 import { useNavigate } from 'react-router-dom';
 import { getCookie } from "../pages/shared/Cookie";
@@ -63,6 +63,7 @@ function ChangeUserInfo(){
     const [gender, setGender] = React.useState("");
     const [birthDate, setBirthDate] = React.useState("");
 
+    const user = useSelector((state) => state.user.user);
     const checkNickname = () => {
       if (!nicknameCheck(nickname)) {
         // alert("닉네임 형식이 맞지 않습니다");
@@ -231,6 +232,7 @@ function ChangeUserInfo(){
       //updateDB에 수정사항 보내주기
       dispatch(
         userActions.updateDB(password, nickname, email,  phoneNumber, postcode, address, detailedAddress)
+        
       );
     };
   
@@ -278,6 +280,7 @@ return(
         </div>
         <div className="mypagebox">
           <div className="mypageboxtext">{username} 님</div>
+          
           {/* <div className="mypageboxtext1">포인트</div> */}
           {/* <div className="mypageboxtext2">0P</div> */}
           <div className="mypageboxtext3">개인 정보 관리</div>
@@ -294,8 +297,8 @@ return(
         <div className="UserInfo1">회원 정보 수정
         <div className="UserInfo2">MY INFORMATION
         </div>
-        <div className="UserInfo3">김하이</div>
-        <div className="UserInfo4">2000.01.01</div>
+        <div className="UserInfo3">{username}</div>
+        
         {/* <div className="UserInfo5">ENGLISH NAME *
         <div className="UserInfo6">
         <input onChange={(e)=> {입력값변경(e.target.value);
@@ -350,7 +353,7 @@ return(
           <div className="signtext3">닉네임 <CheckSpan>*</CheckSpan></div>
           <div className="signtext7">
               <Input
-                placeholder="닉네임을 입력해주세요"
+                // placeholder="닉네임을 입력해주세요"
                 padding="14px"
                 width="332px"
                 _onChange={(e) => {

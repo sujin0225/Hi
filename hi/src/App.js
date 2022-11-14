@@ -124,7 +124,6 @@ const [data, setData] = useState([]);
   const is_login = getCookie("is_login");
   const is_token = getCookie("Authorization");
 
-
   if (is_login && is_token) {
     const username = getCookie("username");
     return(

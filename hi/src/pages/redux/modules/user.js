@@ -14,6 +14,7 @@ const LOG_OUT = "LOG_OUT";
 const GET_USER = "GET_USER";
 const VALIDATE_EMAIL = "VALIDATE_EMAIL";
 const DELETE_USER = 'DELETE_USER';
+const UPDATE_USER = 'UPDATE_USER';
 // const LOAD_TOKEN = "LOAD_TOKEN";
 
 // 초기값
@@ -31,6 +32,7 @@ const logOut = createAction(LOG_OUT, (user) => ({ user }));
 const getUser = createAction(GET_USER, (user) => ({ user }));
 const validateEmail = createAction(VALIDATE_EMAIL, (user) => ({ user }));
 const deleteUser = createAction(DELETE_USER, () => ({}));
+const updateUser = createAction(UPDATE_USER, (user) => ({ user }));
 
 
 const usernameCheckF = (username) => {
@@ -251,6 +253,10 @@ const updateDB = (password, nickname, email, phoneNumber, postcode, address, det
       "detailedAddress : " + detailedAddress,
     );
     try {
+      const jwtToken = getCookie('Authorization');
+    // 새로고침 하면 헤더 default 날라가므로 다시 헤더에 토큰을 담아줌
+    axios.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
+    console.log(jwtToken)
       const signup = await axios.put("/user/update", {
         password: password,
         //passwordCheck: passwordCheck,
@@ -286,65 +292,58 @@ const updateDB = (password, nickname, email, phoneNumber, postcode, address, det
       })
       
     } catch (err) {
-      alert("회원가입 수정에 실패했습니다.");
+      alert("수정에 실패했습니다.");
       console.log(err);
     }
   };
 };
 
-// 회원탈퇴 액션
-// const withdrawalAC = (username, password) => {
-//   return function (dispatch, getState, {history}) {
-//     axios
-//       .delete("/user/delete", {
-//         username: username,
-//         password: password,
-//       })
-//       .then(response => {
-//         // window.alert(response.data);
-//         // navigator('/')
-//         Swal.fire({
-//           icon: 'success',
-//           title: "회원 탈퇴가 완료되었습니다.",
-//           confirmButtonColor: "#668FA1",
-//           confirmButtonText: "확인",
-//         }).then(function(){
-//         window.location.replace("/");
-//         })
-//       })
-//       .catch(error => {
-//         Swal.fire({
-//           icon: 'warning',
-//           title: "회원 탈퇴에 실패했습니다.",
-//           confirmButtonColor: "#668FA1",
-//           confirmButtonText: "확인",
-//         });
-//         console.log("탈퇴 Error", error)
-//       })
-//   }
-// }
 
-const deleteUserDB = (username) => {
+// 변경할 데이터를 서버에 보내줌
+const updateUserDB = (password, nickname, email, phoneNumber, postcode, address, detailedAddress) => {
   return function (dispatch, getState, { history }) {
     axios({
-      method: 'delete',
-      url: `/user/delete`,
-    }).then((res) => {
-      dispatch(deleteUser({
-        username: username
-      }));
-      window.alert('회원탈퇴가 완료되었습니다');
-      // replace를 사용한 이유: 뒤로가기 했을때 회원 정보 수정창이 나오면 비로그인 시 접근 차단은 했지만 사용자 경험이 별로이므로
-      navigator('/')
-    });
+      method: 'put',
+      url: `/user/update`,
+      data: {
+        password: password,
+        nickname: nickname,
+        email: email,
+        phoneNumber: phoneNumber,
+        postcode: postcode,
+        address: address,
+        detailedAddress: detailedAddress
+      },
+    })
+      .then((res) => {
+        // 스토어에서도 최신 데이터로 변경
+        dispatch(
+          updateUser({
+            password: password,
+            nickname: nickname,
+            email: email,
+            phoneNumber: phoneNumber,
+            postcode: postcode,
+            address: address,
+            detailedAddress: detailedAddress
+          }),
+        );
+        window.alert('회원정보가 변경되었습니다!');
+        window.location.replace("/");
+      })
+      .catch((e) => {
+        console.log('에러발생', e);
+      });
   };
 };
+
 
 
 // 로그인 미들웨어
 const loginDB = (username, password) => {
   console.log(username, password);
   return function (dispatch, getState, { history }) {
+    
     axios
       .post("/login", {
         username: username,
@@ -365,6 +364,10 @@ const loginDB = (username, password) => {
         );
         setCookie("username", username);
         setCookie("firstNameKor", DecodedToken.USER_NAME);
+        const jwtToken = response.data;
+        setCookie('is_login', jwtToken);
+        // 통신 시 헤더에 default로 저장
+        axios.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
         dispatch(
           logIn({
             is_login: true,
@@ -398,6 +401,33 @@ const loginDB = (username, password) => {
   };
 };
 
+// const getUserDB = () => {
+//   return function (dispatch, getState, { history }) {
+//     // 토큰 값 조회
+//     const jwtToken = getCookie('is_login');
+//     // 새로고침 하면 헤더 default 날라가므로 다시 헤더에 토큰을 담아줌
+//     axios.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
+//     axios({
+//       method: 'get',
+//       url: `${config.api}/api/user`,
+//     })
+//       .then((res) => {
+//         // 받은 유저 정보 저장
+//         dispatch(
+//           getUser({
+//             username: res.data.userName,
+//             name: res.data.nickName,
+//             email: res.data.email,
+//             phone: res.data.phone,
+//           }),
+//         );
+//       })
+//       .catch((e) => {
+//         console.log('에러발생', e);
+//       });
+//   };
+// };
+
 // 로그아웃 미들웨어
 const logoutDB = () => {
   return function (dispatch, getState, { history }) {
@@ -410,10 +440,40 @@ const logoutDB = () => {
 };
 
 
+const deleteUserDB = () => {
+  return function (dispatch, getState, { history }) {
+    const jwtToken = getCookie('Authorization');
+    axios.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
+    console.log(jwtToken)
+    axios({
+      method: 'delete',
+      url: `/user/delete`,
+    }).then((res) => {
+      dispatch(deleteUser());
+      Swal.fire({
+        icon: 'success',
+        title: "회원탈퇴가 완료되었습니다",
+        confirmButtonColor: "#668FA1",
+        confirmButtonText: "확인",
+      }).then(function(){
+        window.location.replace("/");
+      })
+    });
+  };
+};
+
+
 
 // 리듀서
 export default handleActions(
   {
+    [DELETE_USER]: (state, action) =>
+            produce(state, (draft) => {
+                // 회원 탈퇴 시 쿠키에 담긴 토큰 삭제, 회원정보 비워줌, 로그인 여부 false
+                deleteCookie('is_login');
+                draft.user = null;
+                draft.is_Login = false;
+            }),
     [LOG_IN]: (state, action) =>
       produce(state, (draft) => {
         console.log("유저정보" ,state, action.payload);
@@ -432,13 +492,7 @@ export default handleActions(
       produce(state, (draft) => {
         draft.is_email_validate = action.payload.user;
       }),
-      [DELETE_USER]: (state, action) =>
-            produce(state, (draft) => {
-                // 회원 탈퇴 시 쿠키에 담긴 토큰 삭제, 회원정보 비워줌, 로그인 여부 false
-                deleteCookie('is_login');
-                draft.user = null;
-                draft.is_Login = false;
-            }),
+      
     [GET_USER]: (state, action) => produce(state, (draft) => {}),
   },
   initialState
@@ -455,6 +509,7 @@ const actionCreators = {
   nicknameCheckF,
   EmailValidationAPI,
   updateDB,
+  // updateUserDB,
   deleteUserDB,
   deleteUser
 };
