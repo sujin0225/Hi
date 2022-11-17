@@ -83,15 +83,15 @@
   border: 3px solid;
   border-color: #93B0BD;
   margin-top: 20px;
-  cursor: pointer;
   background-color: transparent;
+  margin-bottom: 115px;
 }
 
 .paymentlinebox2{
     width: 540px;
     height: 194px;
     margin-top: 63px;
-    background-color: #e5e5e5;
+    background-color: #ffffff;
     margin-left: 97px;
     float: left;
     border-right:2px solid #D1DDE3;
@@ -113,3 +113,80 @@
     color: #333333;
     font-weight: 400;
 }
+
+.paymentlinetext2{
+    float: right;
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    font-weight: 300;
+    margin-left: 200px;
+}
+
+.paymentlinetext3{
+    float: right;
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    font-weight: 300;
+    margin-left: 177px;
+    
+}
+
+.paymentlinetext4{
+    float: left;
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    font-weight: 300;
+    clear: both;
+    margin-top: 56px;
+}
+
+.paymentlinetext5{
+    float: right;
+    font-family: 'Gowun Batang';
+    font-size: 40px;
+    color: #668FA1;
+    font-weight: 700;
+    margin-top: 48px;
+    margin-right: 110px;
+}
+
+.paymentlinetext6{
+    float: left;
+    font-family: 'Hahmlet';
+    font-size: 30px;
+    color: #333333;
+    font-weight: 400;
+    margin-left: 90px;
+}
+
+.paymentlinetext7{
+    float: left;
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    font-weight: 300;
+    margin-left: 90px;
+    margin-top: 30px;
+}
+
+.paymentlinetext8{
+    float: left;
+    font-family: 'Hahmlet';
+    font-size: 30px;
+    color: #333333;
+    font-weight: 400;
+    clear: both;
+}
+
+.paymentlinebox4{
+    width: 100%;
+    height: 326px;
+    border: 3px solid;
+    border-color: #F8F8F8;
+    margin-top: 32px;
+    margin-bottom: 115px;
+    float: left;
+  }

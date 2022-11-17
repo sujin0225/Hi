@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600;700&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+
+.infotitle{
+    margin-top: 176px;
+    font-family: 'Noto Sans KR';
+    font-size: 50px;
+    color:#668FA1;
+    float: left;
+    font-weight: 300;
+}
+
+.infotext{
+    margin-top: 40px;
+    font-family: 'Noto Sans KR';
+    font-size: 30px;
+    color:#535353;
+    float: left;
+    font-weight: 400;
+    clear: both;
+}
+
+.infotext1{
+    margin-top: 5px;
+    font-family: 'Noto Sans KR';
+    font-size: 30px;
+    color:#535353;
+    float: left;
+    font-weight: 400;
+    clear: both;
+    margin-bottom: 50px;
+}
+
+.infobirth input{
+    width: 625px;
+    height: 66px;
+    background-color: #ffffff;
+    float: left;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 10px;
+    outline: none ;
+    clear: both;
+    border: 1px solid #ffffff;
+    border-bottom:1px solid #F2F2F2;
+}
+
+.infoemail input{
+    width: 625px;
+    height: 66px;
+    background-color: #ffffff;
+    float: left;
+    font-family: 'Noto Sans KR';
+    font-size: 20px;
+    font-weight: 400;
+    color: #333333;
+    line-height: 10px;
+    outline: none ;
+    clear: both;
+    border: 1px solid #ffffff;
+    border-bottom:1px solid #F2F2F2;
+}
+

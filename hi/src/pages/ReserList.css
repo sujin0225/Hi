@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2? family= Hamlet & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;600;700&family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+.reserlisttitle{
+    margin-top: 125px;
+    font-family: 'Hahmlet';
+    font-size: 28px;
+    font-weight: 500;
+    color: #333333;
+    margin-left: 80px;
+    float: left;
+    text-align: left;
+}
+
+.reserlisttitle1{
+    margin-top: 25px;
+    font-family: 'Hahmlet';
+    font-size: 32px;
+    font-weight: 500;
+    color: #668FA1;
+}
+
+.reserlistbox{
+    width: 800px;
+    height: 375px;
+    border: 3px solid;
+    border-color: #D1DDE3;
+    margin-top: 25px;
+    background-color: transparent;
+    margin-bottom: 115px;
+  }
+
+.reserlistboxtext{
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #707070;
+    float: left;
+    margin-top: 42px;
+    font-weight: 400;
+    margin-left: 60px;
+  }  
+
+.reserlistboxtext1{
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 42px;
+    font-weight: 300;
+    margin-left: 60px;
+  }    
+
+.reserlistboxtext2{
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #707070;
+    float: left;
+    margin-top: 42px;
+    font-weight: 400;
+    margin-left: 60px;
+    clear: both;
+  }  
+  
+.reserlistboxtext3{
+    font-family: 'Noto Sans KR';
+    font-size: 25px;
+    color: #333333;
+    float: left;
+    margin-top: 12px;
+    font-weight: 400;
+    margin-left: 60px;
+    clear: both;
+  }  
+
+.paymentlinetext5{
+    float: right;
+    font-family: 'Gowun Batang';
+    font-size: 40px;
+    color: #668FA1;
+    font-weight: 700;
+    margin-top: 48px;
+    margin-right: 110px;
+}  

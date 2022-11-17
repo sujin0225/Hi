@@ -75,6 +75,8 @@ return(
         </div>
         <div className="mypagebox">
           <div className="mypageboxtext">{username} 님</div>
+          <div className="mypageboxtext3">예약 확인</div>
+          <div className="mypageboxtext4"><Link to="/ReserList">숙소 예약 내역</Link></div>
           <div className="mypageboxtext3">개인 정보 관리</div>
           <div className="mypageboxtext4"><Link to="/ChangeUserInfo">회원 정보 수정</Link></div>
           <div className="mypageboxtext5"><Link to="/Withdraw">회원 탈퇴</Link></div>
@@ -185,6 +187,8 @@ return(
         </div>
         <div className="mypagebox">
           <div className="mypageboxtext">{username} 님</div>
+          <div className="mypageboxtext3">예약 확인</div>
+          <div className="mypageboxtext4"><Link to="/ReserList">숙소 예약 내역</Link></div>
           <div className="mypageboxtext3">개인 정보 관리</div>
           <div className="mypageboxtext4"><Link to="/ChangeUserInfo">회원 정보 수정</Link></div>
           <div className="mypageboxtext5"><Link to="/Withdraw">회원 탈퇴</Link></div>

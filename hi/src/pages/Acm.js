@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { actionCreators as userActions } from "../pages/redux/modules/user";
 import Text1 from "../pages/elements/Text1";
 import { actionCreators } from "../pages/redux/modules/user";
-import { getCookie } from "../pages/shared/Cookie";
+import { getCookie, setCookie } from "../pages/shared/Cookie";
 
 
 function Acm(){
@@ -38,6 +38,7 @@ function Acm(){
     const [products, setProduct] = useState({});
     const [content, setContent] = useState({});
     const location = useLocation();
+    
     
     function onScroll(){
       setPosition(window.scrollY)
@@ -63,7 +64,7 @@ function Acm(){
 useEffect(() => {
   axios.get(`/accommodation/${id}`)
   .then(res => {setData(res.data)
-  })
+    console.log(res.data)})
 },[]);
 
 useEffect(() => {
@@ -71,6 +72,12 @@ useEffect(() => {
   .then(res => {setRoomData(res.data.rooms)
     console.log(res.data.rooms)})
 },[]);
+
+setCookie("nameKor", data.nameKor);
+setCookie("roomname1", roomdata[0]?.name);
+// setCookie("roomname2", roomdata[1]?.name);
+setCookie("price", roomdata[0]?.price.toLocaleString());
+setCookie("roomid", roomdata[0]?.id);
 
 const is_login = getCookie("is_login");
 const is_token = getCookie("Authorization");
@@ -180,9 +187,9 @@ return(
 
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content  active-content" : "content"}>
-         CHECK IN / OUT
+         {/* CHECK IN / OUT
          
-         <div className='text'>{checkin}</div>
+         <div className='text'>{checkin}</div> */}
          {/* <Link to={`/Room/${data.rooms &&(data.rooms??[])[0].id}`}>
          <img src = {data.rooms &&(data.rooms??[])[0].imageUrl} />
          <div className='textbox'>

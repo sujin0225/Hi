@@ -78,7 +78,7 @@ function ChangeUserInfo(){
       dispatch(userActions.nicknameCheckF(nickname));
     };
 
-    const GetAuthNumAPI = (email) => {
+    const GetAuthNum = (email) => {
       const API = `/user/email`;
       axios
         .post(API, {
@@ -280,7 +280,8 @@ return(
         </div>
         <div className="mypagebox">
           <div className="mypageboxtext">{username} 님</div>
-          
+          <div className="mypageboxtext3">예약 확인</div>
+          <div className="mypageboxtext4"><Link to="/ReserList">숙소 예약 내역</Link></div>
           {/* <div className="mypageboxtext1">포인트</div> */}
           {/* <div className="mypageboxtext2">0P</div> */}
           <div className="mypageboxtext3">개인 정보 관리</div>
@@ -385,13 +386,13 @@ return(
                     color="#535353"
                     width="120px"
                       _onClick={() => {
-                        GetAuthNumAPI(email);
+                        GetAuthNum(email);
                       }}
                       tabIndex="0"
                       onKeyPress={(e) => {
                         if (e.key === "Enter") {
                           e.preventDefault();
-                          GetAuthNumAPI(email);
+                          GetAuthNum(email);
                         }
                       }}
                     >
@@ -464,7 +465,7 @@ return(
                 }}
               />
               </div>
-              <div className="signtext8">
+              <div className="signtext9">
               <Input
                 placeholder="상세 주소를 입력해주세요"
                 padding="14px"
@@ -550,6 +551,8 @@ return(
           <div className="mypageboxtext">{username} 님</div>
           {/* <div className="mypageboxtext1">포인트</div> */}
           {/* <div className="mypageboxtext2">0P</div> */}
+          <div className="mypageboxtext3">예약 확인</div>
+          <div className="mypageboxtext4"><Link to="/ReserList">숙소 예약 내역</Link></div>
           <div className="mypageboxtext3">개인 정보 관리</div>
           <div className="mypageboxtext4"><Link to="/ChangeUserInfo">회원 정보 수정</Link></div>
           <div className="mypageboxtext5"><Link to="/Withdraw">회원 탈퇴</Link></div>
@@ -652,13 +655,13 @@ return(
                     color="#535353"
                     width="120px"
                       _onClick={() => {
-                        GetAuthNumAPI(email);
+                        GetAuthNum(email);
                       }}
                       tabIndex="0"
                       onKeyPress={(e) => {
                         if (e.key === "Enter") {
                           e.preventDefault();
-                          GetAuthNumAPI(email);
+                          GetAuthNum(email);
                         }
                       }}
                     >

@@ -1,33 +1,34 @@
-import "./Withdraw_1.css";
+import "./ReserList.css";
 import { Link } from 'react-router-dom'
-import Text1 from "../pages/elements/Text1";
-import { actionCreators } from "../pages/redux/modules/user";
-import { getCookie } from "../pages/shared/Cookie";
+import Text1 from "./elements/Text1";
+import { actionCreators } from "./redux/modules/user";
+import { getCookie } from "./shared/Cookie";
 import styled from "styled-components";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Button, Input } from "../pages/elements/element";
+import { Button, Input } from "./elements/element";
 import Swal from "sweetalert2";
-import { actionCreators as userActions } from "../pages/redux/modules/user";
+import Password from "antd/lib/input/Password";
+import axios from "axios";
+import { useEffect, useRef, useState, useCallback } from 'react';
 
-function Withdraw_1({ user }) {
-  // const Withdraw_1 = (props) => {
+function ReserList(){
     const is_login = getCookie("is_login");
     const is_token = getCookie("Authorization");
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const { username, password } = props;
-    const username = getCookie("username");
-    console.log(username);
-    // const password = user?.password;
+    const [data, setData] = useState([]);
 
-    const deleteBtn = () => {
-      dispatch(userActions.deleteUserDB(username));
-      console.log(userActions.deleteUserDB(username));
-    }
-
+    useEffect(() => {
+        const jwtToken = getCookie('Authorization');
+        axios.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
+        console.log(jwtToken)
+        axios.get(`/reservation/history`)
+        .then(res => {setData(res.data)
+          console.log(res.data)})
+      },[]);
+    
     if (is_login && is_token) {
       const username = getCookie("username");    
 return(
@@ -46,7 +47,7 @@ return(
             <div className='UserInfoheadermenu3'>
             <Text1
                   color="black"
-                  _onClick={() => {
+                  onClick={() => {
                     dispatch(actionCreators.logoutDB());
                   }}
                 >
@@ -77,23 +78,36 @@ return(
           <div className="mypageboxtext4"><Link to="/ChangeUserInfo">회원 정보 수정</Link></div>
           <div className="mypageboxtext5"><Link to="/Withdraw">회원 탈퇴</Link></div>
         </div>
-        <div className="withdraw1text1">회원 탈퇴
-        <div className="withdraw1text2">탈퇴를 신청하시기 전에 아래의 유의사항을 한 번 더 확인해 주시기 바랍니다.
-        </div>
-        <div className="withdraw1box1">
-        <div className="withdraw1text6">탈퇴를 신청하시면 번복이 불가능합니다.</div>
-        <div className="withdraw1text7">탈퇴 신청이 완료되면 즉시 홈페이지 로그인이 제한됩니다.</div>
-        </div>
-        <div className="withdrawtext5">
-        <Button
-                bg = "#FFFFFF"
-                text="탈퇴하기"
-                color = "#535353"
-                borderColor="3px solid #DCDCDC"
-                _onClick={deleteBtn}
-                />  
-        </div>        
-        </div>
+        <div className="reserlisttitle">숙소 예약 내역
+         <div className="reserlisttitle1">파리 제이민박</div>
+         <div className="reserlistbox">
+            <div className="reserlistboxtext">체크인</div>
+            <div className="reserlistboxtext1">2022.11.17</div>
+            <div className="reserlistboxtext">체크아웃</div>
+            <div className="reserlistboxtext1">2022.11.17</div>
+            <div className="reserlistboxtext2">문의사항</div>
+            <div className="reserlistboxtext3">문의사항~~~~문의사항~~~~</div>
+            <div className="reserlistboxtext2">2인실</div>
+            <div className="paymentlinetext5">74,900원</div>
+         </div>
+         </div>
+       
+        {data.map((item,i) => {
+        return (
+          <div className='Acm'>
+          {/* <Link to={`/reser/${item.id}`}> */}
+          {/* <div className='text0'><img src = {item.imageUrl } width='529' height='353'/></div> */}
+          <div className='textbox'>
+            
+          <div className='text1'>{item.id}</div>
+          {/* <div className='text3'>{item.type}</div>
+          <div className='text4'>{item.numberPeople}명</div>
+          <div className='text7'>{item.price.toLocaleString()}원</div> */}
+          </div>
+          {/* </Link> */}
+         </div>
+        )
+      })}
         </div>
    <div className='footerbg'>
           <div className='footer'>
@@ -233,4 +247,4 @@ const CheckSpan = styled.span`
   font-size:25px;
 `;
 
-export default Withdraw_1;
+export default ReserList;

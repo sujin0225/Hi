@@ -15,6 +15,7 @@ const GET_USER = "GET_USER";
 const VALIDATE_EMAIL = "VALIDATE_EMAIL";
 const DELETE_USER = 'DELETE_USER';
 const UPDATE_USER = 'UPDATE_USER';
+const FIND_ID = "FIND_ID"; //아이디 찾기
 // const LOAD_TOKEN = "LOAD_TOKEN";
 
 // 초기값
@@ -33,6 +34,7 @@ const getUser = createAction(GET_USER, (user) => ({ user }));
 const validateEmail = createAction(VALIDATE_EMAIL, (user) => ({ user }));
 const deleteUser = createAction(DELETE_USER, () => ({}));
 const updateUser = createAction(UPDATE_USER, (user) => ({ user }));
+const findid = createAction(FIND_ID, (email) => ({ email }));
 
 
 const usernameCheckF = (username) => {
@@ -241,6 +243,41 @@ const signupDB = (username, password, nickname, email, phoneNumber, postcode, ad
   };
 };
 
+//아이디 찾기
+const Findid = (email, birthDate) => {
+  return function (dispatch, getState, { history }) {
+    axios({
+      method: "POST",
+      url: `/user/findUsername`,
+      data: {
+        email: email,
+        birthDate: birthDate,
+      },
+    })
+      .then((res) => {
+        if (res.data.msg === "success") {
+          dispatch(findid(email));
+          const email = getCookie("email", email);
+          Swal.fire({
+            title: "가입하신 이메일로 아이디를 보내드렸습니다",
+            confirmButtonColor: "#3fbe81",
+            confirmButtonText: "확인",
+          });
+          history.push("/pwdchange");
+        } else {
+          Swal.fire({
+            title: "메일이 존재하지 않습니다!",
+            confirmButtonColor: "#d6d6d6",
+            confirmButtonText: "확인",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("FindPwdAPI에서 오류 발생", err);
+      });
+  };
+};
+
 const updateDB = (password, nickname, email, phoneNumber, postcode, address, detailedAddress) => {
   return async function (dispatch, getState, { history }) {
     console.log(
@@ -363,7 +400,7 @@ const loginDB = (username, password) => {
           response.headers.authorization.split(" ")[1]
         );
         setCookie("username", username);
-        setCookie("firstNameKor", DecodedToken.USER_NAME);
+        // setCookie("firstNameKor", DecodedToken.USER_NAME);
         const jwtToken = response.data;
         setCookie('is_login', jwtToken);
         // 통신 시 헤더에 default로 저장
@@ -372,7 +409,7 @@ const loginDB = (username, password) => {
           logIn({
             is_login: true,
             username: username,
-            firstNameKor: DecodedToken.USER_NAME,
+            // firstNameKor: DecodedToken.USER_NAME,
           })
         );
         Swal.fire({
@@ -491,6 +528,10 @@ export default handleActions(
       [VALIDATE_EMAIL]: (state, action) =>
       produce(state, (draft) => {
         draft.is_email_validate = action.payload.user;
+      }),
+      [FIND_ID]: (state, action) =>
+      produce(state, (draft) => {
+        draft.email = action.payload.email;
       }),
       
     [GET_USER]: (state, action) => produce(state, (draft) => {}),
