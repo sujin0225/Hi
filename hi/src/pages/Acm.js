@@ -73,11 +73,11 @@ useEffect(() => {
     console.log(res.data.rooms)})
 },[]);
 
-setCookie("nameKor", data.nameKor);
-setCookie("roomname1", roomdata[0]?.name);
-// setCookie("roomname2", roomdata[1]?.name);
-setCookie("price", roomdata[0]?.price.toLocaleString());
-setCookie("roomid", roomdata[0]?.id);
+// setCookie("nameKor", data.nameKor);
+// setCookie("roomname1", roomdata[0]?.name);
+// // setCookie("roomname2", roomdata[1]?.name);
+// setCookie("price", roomdata[0]?.price.toLocaleString());
+// setCookie("roomid", roomdata[0]?.id);
 
 const is_login = getCookie("is_login");
 const is_token = getCookie("Authorization");

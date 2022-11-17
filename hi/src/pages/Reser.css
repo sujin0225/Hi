@@ -211,7 +211,7 @@
 }
 
 .resertext7{
-    margin-top: 92px;
+    margin-top: 30px;
     font-family: 'Noto Sans KR';
     font-weight: 400;
     color:#333333;
@@ -247,22 +247,15 @@
     color:#333333;
     font-size: 23px;
     float: left;
-    clear: both;
+   
 }
 
-.resertext11 input{
-    color: #333333;
+.resertext11 {
+    margin-top: 57px;
     font-family: 'Noto Sans KR';
-    background-color:transparent;
-    border:none;
-    width: 352px;
-    font-size: 20px;
-    line-height: 35px;
-    outline: none;
-    position: absolute;
-    border-bottom:1px solid #EEEEEE;
-    margin-top: 20px;
-    position: relative;
+    font-weight: 400;
+    color:#333333;
+    font-size: 30px;
     float: left;
     clear: both;
 }

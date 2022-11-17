@@ -29,19 +29,32 @@ function Reser(){
   const [roomdata, setRoomData] = useState([]);
   const [data, setData] = useState([]);
   const { id } = useParams();
+  const { roomId } = useParams();
+  const { price } = useParams();
   const [date, setDate] = useState({ start: null, end: null });
   const [enquiry, setEnquiry] = useState("");
 
+  useEffect(() => {
+    const jwtToken = getCookie('Authorization');
+    axios.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
+    console.log(jwtToken)
+    axios.get(`/reservation/${id}`)
+    .then(res => {setData(res.data)
+      console.log(res.data)})
+  },[]);
+
+  
 
 
   const reservationDB = () => {
+    
       // try {
         const jwtToken = getCookie('Authorization');
         axios.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
         console.log(jwtToken)
         axios.post("/reservation/new", {
           totalAmount: price,
-          roomId: Number(roomid),
+          roomId: Number(id),
           enquiry: enquiry,
           checkInDate: moment(date.start).format('YYYY-MM-DD'),
           checkOutDate: moment(date.end).format('YYYY-MM-DD'),
@@ -59,14 +72,41 @@ function Reser(){
         })
         
         
-      // } catch (err) {
-      //   alert("예약에 실패했습니다.");
-      //   console.log(err);
-      // }
+  //     // } catch (err) {
+  //     //   alert("예약에 실패했습니다.");
+  //     //   console.log(err);
+  //     // }
     
   };
-
-
+  // const reservationDB = (price, roomId) => {
+  //   return async function (dispatch, getState, { history }) {
+  //     try {
+  //       const jwtToken = getCookie('Authorization');
+  //       axios.defaults.headers.common['Authorization'] = `Bearer ${jwtToken}`;
+  //       console.log(jwtToken)
+  //       const reservation = await axios.post("/reservation/new", {
+  //         totalAmount: price,
+  //         roomId: Number(roomId),
+  //         enquiry: enquiry,
+  //         checkInDate: moment(date.start).format('YYYY-MM-DD'),
+  //         checkOutDate: moment(date.end).format('YYYY-MM-DD'),
+  //       });
+  //       console.log(reservation);
+  //       Swal.fire({
+  //         icon: 'success',
+  //         title: "성공적으로 예약 하셨습니다",
+  //         confirmButtonColor: "#668FA1",
+  //         confirmButtonText: "확인",
+  //       }).then(function(){
+          
+  //         window.location.replace(`/Payment/${id}`);
+  //       })
+  //     } catch (err) {
+  //       alert("예약에 실패했습니다.");
+  //       console.log(err);
+  //     }
+  //   };
+  // };
   
   // useEffect(() => {
   //   axios.get(`/accommodation/${id}`)
@@ -77,11 +117,11 @@ function Reser(){
   const is_login = getCookie("is_login");
   const is_token = getCookie("Authorization");
 
-  const nameKor = getCookie("nameKor");
-  const roomname1 = getCookie("roomname1");
+  // const nameKor = getCookie("nameKor");
+  // const roomname1 = getCookie("roomname1");
   // const roomname2 = getCookie("roomname2");
-  const price = getCookie("price");
-  const roomid = getCookie("roomid");
+  // const price = getCookie("price");
+  // const roomid = getCookie("roomid");
 
   // const handleQuantity = (type) => {
   //   if (type === "plus") {
@@ -183,8 +223,8 @@ return(
       <div className="reserboxtext">숙소</div>
       <div className="reserboxtext1">객실</div>
       <div className="reserboxtext1">날짜</div>
-      <div className="reserboxtext2">{nameKor}</div>
-      <div className="reserboxtext3">{roomname1}</div>
+      <div className="reserboxtext2">{data.accommodationName}</div>
+      <div className="reserboxtext3">{data.roomName}</div>
       <div className="reserboxtext4"> 
       <Calendar
         start={date.start}
@@ -194,8 +234,8 @@ return(
       </div>
     </div>
     <div className="resercontainer">
-      <div className="resertext1">{nameKor}</div>
-      <div className="resertext2">{roomname1}</div>
+      <div className="resertext1">{data.accommodationName}</div>
+      <div className="resertext2">{data.roomName}</div>
       <div className="reserline"></div>
       {/* <div className="resertext3">조식 추가</div>
       <div className="reserline1"></div>
@@ -216,16 +256,19 @@ return(
       <div className="reserbuttontext1">{peoplecount}</div>
       <div className="reserbutton2" onClick={() => PeoplehandleQuantity("minus")}>
         <div className="reserbuttonminus"></div>
-      </div>
-      <div className="resertext7">RESERVATION NAME *</div>
-      <div className="resertext8">김하이</div>
-      <div className="resertext9">대한민국</div>
-      <div className="resertext10">PHONE NUMBER *</div>
-      <div className="resertext11">
+      </div> */}
+      <div className="resertext11">예약 고객 정보 확인</div>
+      
+      <div className="resertext7">예약자</div>
+      <div className="resertext8">{data.userNameKor}</div>
+      {/* <div className="resertext9">대한민국</div> */}
+      <div className="resertext7">휴대전화</div>
+      <div className="resertext8">{data.phoneNumber}</div>
+      {/* <div className="resertext11">
       <input onChange={(e)=> {입력값변경(e.target.value);
               console.log(입력값);}}></input>
-      </div>
-      <div className="resertext10">E-MAIL *</div>
+      </div> */}
+      {/* <div className="resertext10">E-MAIL *</div>
       <div className="resertext11">
       <input onChange={(e)=> {입력값변경(e.target.value);
               console.log(입력값);}}></input><div className="reserbutton"><button type='button' onClick={()=>{
@@ -303,7 +346,7 @@ return(
         <div className="resertotal3">{20000 * count}</div>
         <div className="resertotalline"></div> */}
         <div className="resertotal4">총 예약금액</div>
-        <div className="resertotal5">{price}원</div>
+        <div className="resertotal5">{data.price}원</div>
       </div>
       <button className="resertotalbutton" onClick={reservationDB} >예약 하기</button>
       
@@ -382,8 +425,8 @@ return(
     <div className="reserboxtext">숙소</div>
     <div className="reserboxtext1">객실</div>
     <div className="reserboxtext1">날짜</div>
-    <div className="reserboxtext2">{nameKor}</div>
-    <div className="reserboxtext3">{roomname1}</div>
+    <div className="reserboxtext2">{}</div>
+    <div className="reserboxtext3">{}</div>
     <div className="reserboxtext4"> 
     <Calendar
       start={date.start}
@@ -393,8 +436,8 @@ return(
     </div>
   </div>
   <div className="resercontainer">
-    <div className="resertext1">{nameKor}</div>
-    <div className="resertext2">{roomname1}</div>
+    <div className="resertext1">{}</div>
+    <div className="resertext2">{}</div>
     <div className="reserline"></div>
     {/* <div className="resertext3">조식 추가</div>
     <div className="reserline1"></div>
@@ -502,7 +545,7 @@ return(
       <div className="resertotal3">{20000 * count}</div>
       <div className="resertotalline"></div> */}
       <div className="resertotal4">총 예약금액</div>
-      <div className="resertotal5">{price}원</div>
+      <div className="resertotal5">{}원</div>
     </div>
     <button className="resertotalbutton" onClick={reservationDB}>예약 하기</button>
     
@@ -565,5 +608,6 @@ return(
 //         </div>
 //   )
 // }
+
 
 export default Reser;
