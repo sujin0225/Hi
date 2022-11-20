@@ -79,35 +79,36 @@ return(
           <div className="mypageboxtext5"><Link to="/Withdraw">회원 탈퇴</Link></div>
         </div>
         <div className="reserlisttitle">숙소 예약 내역
-         <div className="reserlisttitle1">파리 제이민박</div>
-         <div className="reserlistbox">
-            <div className="reserlistboxtext">체크인</div>
-            <div className="reserlistboxtext1">2022.11.17</div>
-            <div className="reserlistboxtext">체크아웃</div>
-            <div className="reserlistboxtext1">2022.11.17</div>
-            <div className="reserlistboxtext2">문의사항</div>
-            <div className="reserlistboxtext3">문의사항~~~~문의사항~~~~</div>
-            <div className="reserlistboxtext2">2인실</div>
-            <div className="paymentlinetext5">74,900원</div>
-         </div>
-         </div>
-       
-        {data.map((item,i) => {
+         {/* <div className="reserlisttitle1">파리 제이민박</div> */}
+         {data.map((item,i) => {
         return (
           <div className='Acm'>
-          {/* <Link to={`/reser/${item.id}`}> */}
-          {/* <div className='text0'><img src = {item.imageUrl } width='529' height='353'/></div> */}
-          <div className='textbox'>
-            
-          <div className='text1'>{item.id}</div>
-          {/* <div className='text3'>{item.type}</div>
-          <div className='text4'>{item.numberPeople}명</div>
-          <div className='text7'>{item.price.toLocaleString()}원</div> */}
-          </div>
-          {/* </Link> */}
+            <div className="reserlisttitle1">{item.accommodationName}</div>
+            <div className="reserlistbox">
+            <div className="reserlistboxtext">체크인</div>
+            <div className="reserlistboxtext1">{item.checkInDate}</div>
+            <div className="reserlistboxtext">체크아웃</div>
+            <div className="reserlistboxtext1">{item.checkOutDate}</div>
+            <div className="reserlistboxtext2">문의사항</div>
+            <div className="reserlistboxtext3">{item.enquiry}</div>
+            <div className="reserlistboxtext2">{item.roomName}</div>
+            <div className="paymentlinetext5">{item.priceKor}</div>
+            </div>
          </div>
         )
       })}
+         
+            
+            
+            
+            
+            
+           
+            
+            
+         </div>
+        
+        
         </div>
    <div className='footerbg'>
           <div className='footer'>

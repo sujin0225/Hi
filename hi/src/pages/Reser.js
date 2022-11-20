@@ -67,7 +67,7 @@ function Reser(){
             confirmButtonText: "확인",
           }).then(function(){
             
-            window.location.replace(`/Payment/${id}`);
+            window.location.replace(`/`);
           })
         })
         
